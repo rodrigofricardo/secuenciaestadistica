@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estadística — Grado 11°</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f0e0c;--cream:#faf7f2;--amber:#c8790a;--amber-l:#f5c842;
+  --teal:#0b6464;--teal-l:#1a8f8f;--rose:#b03026;
+  --slate:#253245;--muted:#7a7570;--border:#d8d0c4;
+  --card:#fff;--shadow:rgba(15,14,12,.08);--sec:#f0ebe0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);line-height:1.75;font-size:16px}
+
+header{background:var(--ink);color:var(--cream);padding:54px 40px 44px;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 48px,rgba(200,121,10,.05) 48px,rgba(200,121,10,.05) 49px)}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;letter-spacing:-1px;position:relative;line-height:1.1}
+header h1 em{color:var(--amber-l);font-style:italic}
+header .sub{font-size:1rem;color:rgba(250,247,242,.6);margin-top:10px;position:relative;letter-spacing:.04em;text-transform:uppercase}
+.badge-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative}
+.badge{background:rgba(200,121,10,.18);border:1px solid rgba(200,121,10,.4);color:var(--amber-l);font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:4px 13px;border-radius:2px;letter-spacing:.06em}
+
+nav{background:var(--slate);position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;border-bottom:3px solid var(--amber)}
+nav a{display:inline-block;color:rgba(250,247,242,.75);text-decoration:none;font-size:.8rem;font-weight:600;padding:13px 16px;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
+nav a:hover,nav a.active{color:var(--amber-l);background:rgba(200,121,10,.12)}
+nav .n{font-family:'JetBrains Mono',monospace;font-size:.68rem;opacity:.5;margin-right:4px}
+
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:68px 0}
+section:nth-child(even){background:var(--sec)}
+.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:40px}
+.sec-head .nn{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--border);line-height:1}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--ink)}
+.sec-head p{color:var(--muted);font-size:.9rem;margin-top:2px}
+.divider{width:44px;height:4px;background:var(--amber);margin:10px 0}
+
+.card{background:var(--card);border-radius:4px;border:1px solid var(--border);padding:26px 30px;margin-bottom:18px;box-shadow:0 2px 10px var(--shadow)}
+.card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--slate);margin-bottom:10px}
+.card.hl{border-left:4px solid var(--amber);background:linear-gradient(135deg,#fffdf5,#fff)}
+.card.tl{border-left:4px solid var(--teal)}
+.card.rs{border-left:4px solid var(--rose)}
+.def-box{background:linear-gradient(135deg,var(--slate),#1a2b3e);color:var(--cream);border-radius:4px;padding:22px 26px;margin:18px 0}
+.def-box h4{font-family:'Playfair Display',serif;color:var(--amber-l);margin-bottom:8px;font-size:1.05rem}
+.def-box p{font-size:.93rem;opacity:.9;line-height:1.6}
+
+.ex{background:#fffdf3;border:1px solid #e8c870;border-radius:4px;padding:22px 26px;margin:18px 0}
+.ex-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ex-hd .etag{background:var(--amber);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:2px}
+.ex-hd h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--slate)}
+.step{display:flex;gap:12px;margin:9px 0}
+.sn{width:26px;height:26px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;flex-shrink:0;margin-top:3px}
+.sc{flex:1}
+.sc b{color:var(--teal);display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+
+.tw{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead{background:var(--slate);color:#fff}
+thead th{padding:11px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.77rem;letter-spacing:.04em}
+tbody tr:nth-child(even){background:var(--sec)}
+tbody td{padding:9px 14px;border-bottom:1px solid var(--border)}
+tbody tr:hover{background:#fff8e6}
+tfoot td{padding:9px 14px;background:var(--ink);color:var(--amber-l);font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600}
+
+.fm{background:var(--ink);color:var(--amber-l);font-family:'JetBrains Mono',monospace;padding:14px 18px;border-radius:4px;margin:12px 0;font-size:.95rem;text-align:center}
+.fm small{color:rgba(245,200,66,.55);font-size:.72rem;display:block;margin-top:3px}
+
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+
+.inp{border:2px solid var(--border);border-radius:4px;padding:9px 13px;font-size:.95rem;font-family:'Source Sans 3',sans-serif;outline:none;transition:border-color .2s;width:100%}
+.inp:focus{border-color:var(--teal)}
+.inp-sm{width:140px!important}
+.lbl{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:4px}
+.row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:12px}
+.btn{background:var(--teal);color:#fff;border:none;border-radius:4px;padding:10px 22px;font-family:'Source Sans 3',sans-serif;font-size:.93rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn:hover{background:var(--teal-l);transform:translateY(-1px)}
+.btn.am{background:var(--amber)}.btn.am:hover{background:#e08a0c}
+.btn.rs{background:var(--rose)}.btn.rs:hover{background:#c83228}
+.btn.dk{background:var(--slate)}.btn.dk:hover{background:#1a2b3e}
+.res-box{background:var(--sec);border-left:4px solid var(--teal);padding:13px 17px;border-radius:0 4px 4px 0;font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--slate);min-height:46px;margin-top:10px}
+
+.ch{background:#fff;border:1px solid var(--border);border-radius:4px;padding:22px;margin:18px 0}
+.ch h4{font-family:'Playfair Display',serif;color:var(--slate);margin-bottom:14px;font-size:1.05rem}
+
+.act{background:#fff;border:1px solid var(--border);border-radius:4px;padding:30px;margin-bottom:22px}
+.act-hd{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.act-num{background:var(--rose);color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;flex-shrink:0}
+.act-hd h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--slate)}
+.q-area{background:var(--sec);border-radius:4px;padding:18px 22px;margin:14px 0;border-left:4px solid var(--amber)}
+.q-area p{margin-bottom:6px}
+.opts label{display:flex;align-items:flex-start;gap:9px;padding:7px 11px;border-radius:4px;cursor:pointer;margin-bottom:5px;transition:background .15s}
+.opts label:hover{background:rgba(11,100,100,.07)}
+.opts input[type=radio]{margin-top:4px;accent-color:var(--teal);flex-shrink:0}
+.fb{padding:11px 15px;border-radius:4px;margin-top:10px;font-weight:600;font-size:.9rem;display:none}
+.fb.ok{background:#d4edda;border:1px solid #28a745;color:#155724}
+.fb.no{background:#f8d7da;border:1px solid #dc3545;color:#721c24}
+
+/* SCI CALC */
+.sci{background:#111;border-radius:8px;padding:14px;margin:12px 0;display:none}
+.sci.open{display:block}
+.sdisp{background:#000;padding:10px;border-radius:4px;text-align:right;font-family:'JetBrains Mono',monospace;margin-bottom:10px}
+.sdisp .sexp{color:#555;font-size:.73rem;min-height:18px}
+.sdisp .sval{color:var(--amber-l);font-size:1.55rem;font-weight:600;word-break:break-all}
+.sbg{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.sb{background:#1e1e1e;border:1px solid #2e2e2e;color:#ccc;padding:9px 3px;border-radius:3px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.73rem;font-weight:600;transition:background .1s;text-align:center}
+.sb:hover{background:#2a2a2a}.sb.fn{color:#99ccff;background:#0a1525}.sb.op{color:#ffcc66;background:#1a1500}
+.sb.eq{background:var(--amber);color:#111;grid-column:span 2}.sb.cl{color:#ff8080;background:#1a0000}
+.tog-c{background:var(--ink);color:var(--amber-l);border:1px solid #555;border-radius:4px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:.78rem;cursor:pointer;margin-bottom:8px}
+
+.pgbar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px 0}
+.pgfill{height:100%;background:linear-gradient(90deg,var(--teal),var(--amber));border-radius:3px;transition:width .4s}
+
+/* MODAL / OVERLAYS */
+.overlay{position:fixed;inset:0;background:rgba(15,14,12,.88);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.overlay.show{display:flex}
+.modal-box{background:var(--cream);border-radius:6px;max-width:520px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);padding:40px}
+.modal-box h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--slate);margin-bottom:8px}
+.modal-box p{color:var(--muted);font-size:.92rem;margin-bottom:20px}
+
+/* CODE SCREEN */
+.code-screen{position:fixed;inset:0;background:var(--ink);z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px}
+.code-screen.show{display:flex}
+.code-screen h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--amber-l);margin-bottom:6px;text-align:center}
+.code-screen > p{color:rgba(250,247,242,.6);margin-bottom:28px;text-align:center;font-size:.95rem}
+.code-in{font-family:'JetBrains Mono',monospace;font-size:2rem;letter-spacing:.3em;text-align:center;background:rgba(255,255,255,.07);border:2px solid rgba(200,121,10,.4);color:var(--amber-l);border-radius:6px;padding:18px 28px;width:220px;outline:none;margin-bottom:14px}
+.code-in:focus{border-color:var(--amber)}
+.code-error{color:#ff8080;font-family:'JetBrains Mono',monospace;font-size:.85rem;margin-bottom:14px;display:none}
+
+/* TEST */
+.test-wrap{border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:var(--cream)}
+.test-top{background:var(--ink);color:var(--cream);padding:26px 30px}
+.test-top h2{font-family:'Playfair Display',serif;font-size:1.6rem}
+.test-top p{opacity:.65;font-size:.9rem;margin-top:5px}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.tm{background:rgba(255,255,255,.1);padding:6px 14px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.78rem}
+.test-body{padding:28px}
+.iq{border-bottom:1px solid var(--border);padding:22px 0}
+.iq:last-child{border-bottom:none}
+.iq .qn{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--amber);font-weight:600;letter-spacing:.06em;margin-bottom:4px}
+.iq .qc{font-size:.76rem;color:var(--muted);font-style:italic;margin-bottom:7px}
+.iq .qt{color:var(--slate);margin-bottom:13px;line-height:1.7}
+.io{display:flex;gap:11px;align-items:flex-start;padding:7px 11px;border-radius:4px;cursor:pointer;margin-bottom:4px;transition:background .15s}
+.io:hover{background:#f0fafa}.io input{margin-top:4px;accent-color:var(--teal);flex-shrink:0}
+.test-foot{background:var(--sec);border-top:2px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.timer-disp{font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:var(--rose);font-weight:600}
+
+/* STU FORM */
+.stu-form{background:#f8f4ee;border:1px solid var(--border);border-radius:4px;padding:24px;margin-bottom:20px}
+.stu-form h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--slate);margin-bottom:8px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:14px}
+select.inp{background:#fff;cursor:pointer}
+
+/* TEACHER PANEL */
+.tpanel{position:fixed;inset:0;background:var(--ink);z-index:600;overflow-y:auto;padding:40px;display:none}
+.tpanel.show{display:block}
+.tpanel h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:6px;color:var(--amber-l)}
+.tpanel > p{opacity:.6;margin-bottom:28px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:28px}
+.stat-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:18px;text-align:center}
+.stat-box .val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--amber-l)}
+.stat-box .lbl2{font-size:.78rem;opacity:.6;margin-top:4px;letter-spacing:.04em;text-transform:uppercase}
+.tpanel table thead{background:rgba(255,255,255,.12)}
+.tpanel table thead th{color:var(--amber-l)}
+.tpanel table tbody td{color:rgba(250,247,242,.85);border-bottom:1px solid rgba(255,255,255,.07)}
+.tpanel table tbody tr:nth-child(even){background:rgba(255,255,255,.04)}
+.tpanel table tbody tr:hover{background:rgba(200,121,10,.12)}
+
+/* TEACHER ACCESS MODAL */
+.ta-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:700;display:none;align-items:center;justify-content:center}
+.ta-modal.show{display:flex}
+.ta-box{background:var(--ink);border:1px solid rgba(200,121,10,.3);border-radius:8px;padding:40px;max-width:380px;width:90%;text-align:center}
+.ta-box h2{font-family:'Playfair Display',serif;color:var(--amber-l);font-size:1.5rem;margin-bottom:8px}
+.ta-box p{color:rgba(250,247,242,.6);font-size:.9rem;margin-bottom:22px}
+.ta-in{font-family:'JetBrains Mono',monospace;font-size:1.3rem;letter-spacing:.2em;text-align:center;background:rgba(255,255,255,.07);border:2px solid rgba(200,121,10,.3);color:var(--amber-l);border-radius:6px;padding:14px;width:100%;outline:none;margin-bottom:12px}
+.ta-in:focus{border-color:var(--amber)}
+.ta-error{color:#ff8080;font-size:.83rem;margin-bottom:12px;display:none;font-family:'JetBrains Mono',monospace}
+
+/* RESULT HIGHLIGHT */
+.res-hi-ok{background:#d4edda!important}
+.res-hi-no{background:#f8d7da!important}
+.exp-note{background:#fff3cd;border:1px solid #e0a800;border-radius:4px;padding:9px 13px;margin-top:8px;font-size:.85rem;color:#664d03}
+
+
+/* EXAM ACTIVE MODE — hide all page content */
+body.exam-active > header,
+body.exam-active > nav,
+body.exam-active > section,
+body.exam-active > footer {display:none!important}
+body.exam-active .code-screen{display:none!important}
+
+/* Warning modal */
+.warn-modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:900;display:none;align-items:center;justify-content:center;padding:20px}
+.warn-modal.show{display:flex}
+.warn-box{background:#fff;border-radius:8px;padding:36px;max-width:460px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.warn-box h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:#b03026;margin-bottom:10px}
+.warn-box p{color:#444;font-size:.95rem;margin-bottom:22px;line-height:1.6}
+.warn-box .wb{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Exam overlay full-screen during exam */
+#testOverlay.exam-mode{z-index:800;background:var(--cream)}
+#testOverlay.exam-mode > div{max-height:100vh;border-radius:0;max-width:100%}
+
+/* Sending spinner */
+.send-spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:640px){
+  .sec-head .nn{font-size:2.4rem}
+  .sec-head h2{font-size:1.3rem}
+  header{padding:36px 18px}
+  section{padding:48px 0}
+  .card{padding:18px}
+  .test-body{padding:16px}
+  .sbg{grid-template-columns:repeat(5,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TEACHER ACCESS MODAL ═══ -->
+<div class="ta-modal" id="taModal">
+  <div class="ta-box">
+    <h2>🔐 Panel Docente</h2>
+    <p>Ingresa la contraseña de acceso</p>
+    <input class="ta-in" id="taIn" type="password" maxlength="20" placeholder="••••••••" onkeydown="if(event.key==='Enter')verifyTeacher()">
+    <div class="ta-error" id="taErr">Contraseña incorrecta.</div>
+    <button class="btn am" style="width:100%;margin-bottom:10px" onclick="verifyTeacher()">Ingresar</button>
+    <button style="background:none;border:none;color:rgba(250,247,242,.3);font-size:.82rem;cursor:pointer" onclick="document.getElementById('taModal').classList.remove('show')">Cancelar</button>
+  </div>
+</div>
+
+<!-- ═══ TEACHER PANEL ═══ -->
+<div class="tpanel" id="teacherPanel">
+  <button class="btn rs" style="margin-bottom:24px" onclick="closePanel()">✕ Cerrar panel</button>
+  <h2>📊 Panel del Docente — Estadística Grado 11°</h2>
+  <p>Resultados registrados en este navegador</p>
+  <div class="stat-grid" id="panelStats"></div>
+  <div id="panelTableWrap"></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+    <button class="btn am" onclick="exportExcel()">📥 Descargar Excel</button>
+    <button class="btn rs" onclick="clearResults()">🗑 Limpiar resultados</button>
+  </div>
+</div>
+
+<!-- ═══ CODE SCREEN ═══ -->
+<div class="code-screen" id="codeScreen">
+  <h2>Prueba de Estadística</h2>
+  <p>Ingresa el código de 3 cifras entregado por tu docente</p>
+  <input class="code-in" id="codeIn" type="text" maxlength="3" placeholder="···" oninput="this.value=this.value.replace(/\D/g,'')" onkeydown="if(event.key==='Enter')verifyCode()">
+  <div class="code-error" id="codeErr">Código incorrecto. Intenta de nuevo.</div>
+  <button class="btn am" style="margin-bottom:16px" onclick="verifyCode()">Ingresar →</button>
+  <button style="background:none;border:none;color:rgba(250,247,242,.4);font-size:.82rem;cursor:pointer" onclick="document.getElementById('codeScreen').classList.remove('show')">← Volver al contenido</button>
+</div>
+
+
+<!-- ═══ EXIT WARNING MODAL ═══ -->
+<div class="warn-modal" id="warnModal">
+  <div class="warn-box">
+    <h2>⚠️ ¿Salir de la prueba?</h2>
+    <p>Si sales o minimizas la página, <strong>la prueba se dará por finalizada</strong> y se registrarán las respuestas contestadas hasta este momento.</p>
+    <div class="wb">
+      <button class="btn" onclick="cancelExit()" style="background:#0b6464">Continuar prueba</button>
+      <button class="btn rs" onclick="confirmExit()">Salir y registrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ EXAM OVERLAY ═══ -->
+<div class="overlay" id="testOverlay">
+  <div style="background:var(--cream);border-radius:6px;max-width:880px;width:100%;max-height:94vh;overflow-y:auto" id="testScrollBox">
+    <div class="test-wrap" id="testWrap"></div>
+  </div>
+</div>
+
+<header>
+  <h1>Esta<em>dística</em></h1>
+  <p class="sub">Secuencia Didáctica · Grado 11° · Análisis de Datos</p>
+  <div class="badge-row">
+    <span class="badge">▸ 8 módulos</span>
+    <span class="badge">▸ 5 actividades</span>
+    <span class="badge">▸ 5 versiones de prueba</span>
+    <span class="badge">▸ Panel docente</span>
+  </div>
+</header>
+
+<nav id="mainNav">
+  <a href="#porcentajes"><span class="n">00</span>Porcentajes</a>
+  <a href="#poblacion"><span class="n">01</span>Población</a>
+  <a href="#muestreo"><span class="n">02</span>Muestreo</a>
+  <a href="#frecuencias"><span class="n">03</span>Frecuencias</a>
+  <a href="#graficas"><span class="n">04</span>Gráficas</a>
+  <a href="#medidas"><span class="n">05</span>Medidas</a>
+  <a href="#actividades"><span class="n">06</span>Actividades</a>
+  <a href="#pruebas"><span class="n">07</span>Prueba</a>
+  <a href="#" onclick="openTeacherModal(event)" style="color:var(--amber-l)">👩‍🏫 Docente</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     00 — PORCENTAJES
+═══════════════════════════════════════════ -->
+<section id="porcentajes">
+<div class="container">
+  <div class="sec-head">
+    <div class="nn">00</div>
+    <div><h2>Módulo de Porcentajes</h2><div class="divider"></div><p>Fundamento para el análisis estadístico</p></div>
+  </div>
+  <div class="def-box">
+    <h4>¿Qué es un porcentaje?</h4>
+    <p>Un <strong>porcentaje</strong> expresa una cantidad como fracción de 100. Es la herramienta clave para interpretar frecuencias relativas, tasas de cambio y proporciones en estadística. El símbolo <strong>%</strong> significa "de cada 100".</p>
+  </div>
+  <div class="fm">% = (Parte / Total) × 100 <small>· Parte = (% × Total) / 100 · Total = (Parte × 100) / %</small></div>
+
+  <div class="g2" style="margin-top:22px">
+    <div class="card hl">
+      <h3>① ¿Qué % es A de B?</h3>
+      <div class="row">
+        <div><label class="lbl">Parte (A)</label><input class="inp inp-sm" id="p1a" type="number" placeholder="ej. 35"></div>
+        <div><label class="lbl">Total (B)</label><input class="inp inp-sm" id="p1b" type="number" placeholder="ej. 140"></div>
+      </div>
+      <button class="btn" onclick="c1()">Calcular</button>
+      <div class="res-box" id="r1">—</div>
+    </div>
+    <div class="card tl">
+      <h3>② X% de N = ?</h3>
+      <div class="row">
+        <div><label class="lbl">Porcentaje %</label><input class="inp inp-sm" id="p2x" type="number" placeholder="ej. 15"></div>
+        <div><label class="lbl">Total (N)</label><input class="inp inp-sm" id="p2n" type="number" placeholder="ej. 200"></div>
+      </div>
+      <button class="btn" onclick="c2()">Calcular</button>
+      <div class="res-box" id="r2">—</div>
+    </div>
+    <div class="card rs">
+      <h3>③ Total si A = X%</h3>
+      <div class="row">
+        <div><label class="lbl">Parte (A)</label><input class="inp inp-sm" id="p3a" type="number" placeholder="ej. 48"></div>
+        <div><label class="lbl">%</label><input class="inp inp-sm" id="p3x" type="number" placeholder="ej. 30"></div>
+      </div>
+      <button class="btn" onclick="c3()">Calcular</button>
+      <div class="res-box" id="r3">—</div>
+    </div>
+    <div class="card">
+      <h3>④ Aumento / Descuento</h3>
+      <div class="row">
+        <div><label class="lbl">Valor inicial</label><input class="inp inp-sm" id="p4v" type="number" placeholder="ej. 80000"></div>
+        <div><label class="lbl">% cambio</label><input class="inp inp-sm" id="p4c" type="number" placeholder="ej. 12"></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" onclick="c4(1)">+ Aumento</button>
+        <button class="btn am" onclick="c4(-1)">− Descuento</button>
+      </div>
+      <div class="res-box" id="r4">—</div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD PORCENTAJES -->
+  <div class="act" style="margin-top:32px">
+    <div class="act-hd"><div class="act-num">P</div><h3>Actividad: Porcentajes en contexto real</h3></div>
+    <button class="tog-c" onclick="toggleCalc('cpct')">🔬 Calculadora Científica</button>
+    <div id="cpct" class="sci"></div>
+    <div id="pct-q" class="q-area"><p>Haz clic en "Nuevo problema" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="genPct()">🎲 Nuevo problema</button>
+      <button class="btn am" onclick="checkPct()">✔ Verificar</button>
+    </div>
+    <div id="pct-fb" class="fb"></div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-hd"><span class="etag">EJEMPLO 1</span><h4>Encuesta sobre transporte público</h4></div>
+    <p>En una encuesta a 450 personas de Medellín, 288 usan transporte público diariamente. ¿Qué porcentaje usa transporte público?</p>
+    <div class="step"><div class="sn">1</div><div class="sc"><b>Datos</b>Parte = 288 · Total = 450</div></div>
+    <div class="step"><div class="sn">2</div><div class="sc"><b>Aplicar fórmula</b>% = (288/450) × 100 = 0.64 × 100 = <strong>64%</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="sc"><b>Interpretar</b>El 64% de los encuestados depende del transporte público. El 36% restante usa otro medio.</div></div>
+    <div class="fm">% = (288/450) × 100 = 64%</div>
+  </div>
+  <div class="ex">
+    <div class="ex-hd"><span class="etag">EJEMPLO 2</span><h4>Variación porcentual de la canasta familiar</h4></div>
+    <p>El precio promedio de la canasta familiar era $1 250 000 en enero y subió a $1 337 500 en diciembre. ¿Cuál fue la variación porcentual?</p>
+    <div class="step"><div class="sn">1</div><div class="sc"><b>Variación absoluta</b>1 337 500 − 1 250 000 = $87 500</div></div>
+    <div class="step"><div class="sn">2</div><div class="sc"><b>Variación porcentual</b>% = (87 500 / 1 250 000) × 100 = <strong>7%</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="sc"><b>Interpretar</b>La canasta familiar aumentó un 7% en el año (tasa de inflación del hogar).</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     01 — POBLACIÓN Y MUESTRA
+═══════════════════════════════════════════ -->
+<section id="poblacion">
+<div class="container">
+  <div class="sec-head"><div class="nn">01</div><div><h2>Población y Muestra</h2><div class="divider"></div><p>Conceptos fundamentales de la investigación estadística</p></div></div>
+  <div class="g2">
+    <div class="def-box"><h4>Población (N)</h4><p>Conjunto <strong>completo</strong> de individuos u objetos con una característica de interés. Un <strong>parámetro</strong> describe a la población (μ, σ, π).</p></div>
+    <div class="def-box" style="background:linear-gradient(135deg,#0b5252,#083838)"><h4>Muestra (n)</h4><p>Subconjunto <strong>representativo</strong> de la población. Un <strong>estadístico</strong> describe a la muestra (x̄, s, p̂). La validez del estudio depende de su selección.</p></div>
+  </div>
+  <div class="ex" style="margin-top:20px">
+    <div class="ex-hd"><span class="etag">EJEMPLO REAL</span><h4>Estudio de consumo de redes sociales — DANE</h4></div>
+    <p>El DANE quiere conocer cuántas horas diarias pasan los jóvenes de 15–25 años en redes sociales. Colombia tiene ≈ 8 200 000 jóvenes en ese rango.</p>
+    <div class="step"><div class="sn">1</div><div class="sc"><b>Población (N)</b>Los 8 200 000 jóvenes colombianos de 15 a 25 años.</div></div>
+    <div class="step"><div class="sn">2</div><div class="sc"><b>Muestra — Fórmula de Slovin (e = 3%)</b>n = 8 200 000 / (1 + 8 200 000 × 0.0009) ≈ <strong>1 111 personas</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="sc"><b>Variable</b>Horas diarias en redes → Variable cuantitativa continua</div></div>
+    <div class="step"><div class="sn">4</div><div class="sc"><b>Parámetro vs. Estadístico</b>Si la media real fuera μ = 4.2 h y la muestra da x̄ = 4.1 h, el estadístico estima bien el parámetro.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     02 — MUESTREO
+═══════════════════════════════════════════ -->
+<section id="muestreo">
+<div class="container">
+  <div class="sec-head"><div class="nn">02</div><div><h2>Técnicas de Muestreo</h2><div class="divider"></div><p>Métodos para seleccionar muestras representativas</p></div></div>
+  <div class="g2">
+    <div class="card hl"><h3>🎲 Aleatorio Simple</h3><p>Cada elemento tiene igual probabilidad. Se usa tabla de números aleatorios o software.</p></div>
+    <div class="card tl"><h3>📋 Sistemático</h3><p>Se selecciona cada k-ésimo elemento (k = N/n). Inicio aleatorio entre 1 y k.</p></div>
+    <div class="card rs"><h3>🗂 Estratificado</h3><p>Se divide en estratos homogéneos y se toma muestra proporcional de cada uno.</p></div>
+    <div class="card"><h3>🔵 Conglomerados</h3><p>Se seleccionan grupos completos (barrios, colegios). Económico pero menos preciso.</p></div>
+  </div>
+  <div class="ex" style="margin-top:18px">
+    <div class="ex-hd"><span class="etag">EJEMPLO — ESTRATIFICADO</span><h4>Encuesta de hábitos alimenticios</h4></div>
+    <p>Un colegio tiene 720 estudiantes en tres jornadas. Se quiere encuestar 90 de forma estratificada.</p>
+    <div class="tw"><table><thead><tr><th>Jornada</th><th>Estudiantes</th><th>Proporción</th><th>Muestra</th></tr></thead><tbody><tr><td>Mañana</td><td>360</td><td>50%</td><td>45</td></tr><tr><td>Tarde</td><td>252</td><td>35%</td><td>31</td></tr><tr><td>Noche</td><td>108</td><td>15%</td><td>14</td></tr></tbody><tfoot><tr><td>TOTAL</td><td>720</td><td>100%</td><td>90</td></tr></tfoot></table></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     03 — TABLAS DE FRECUENCIA
+═══════════════════════════════════════════ -->
+<section id="frecuencias">
+<div class="container">
+  <div class="sec-head"><div class="nn">03</div><div><h2>Tablas de Frecuencia</h2><div class="divider"></div><p>Organización sistemática de datos reales</p></div></div>
+  <div class="g2">
+    <div class="def-box"><h4>Frecuencia Absoluta (fi)</h4><p>Número de veces que aparece cada valor. Σfi = n</p></div>
+    <div class="def-box" style="background:linear-gradient(135deg,#0b5252,#083838)"><h4>Frecuencia Relativa (hi)</h4><p>hi = fi / n. Proporción de cada valor. Σhi = 1</p></div>
+    <div class="def-box" style="background:linear-gradient(135deg,#4d2a00,#2a1500)"><h4>Frecuencia Acumulada (Fi)</h4><p>Suma de fi hasta el valor i. Permite leer percentiles.</p></div>
+    <div class="def-box" style="background:linear-gradient(135deg,#2a1a3a,#1a0a28)"><h4>Frec. Relativa Acumulada (Hi)</h4><p>Hi = Fi / n. El último valor es siempre 1 (100%).</p></div>
+  </div>
+  <div class="ex" style="margin-top:22px">
+    <div class="ex-hd"><span class="etag">EJEMPLO — DATOS AGRUPADOS</span><h4>Tiempo de desplazamiento al colegio (minutos) — 50 estudiantes</h4></div>
+    <p>Rango: 5 a 65 min. Sturges: k = 1 + 3.322×log(50) ≈ 7 clases, amplitud c ≈ 10 min.</p>
+    <div class="tw"><table><thead><tr><th>Intervalo (min)</th><th>Marca xi</th><th>fi</th><th>hi</th><th>hi%</th><th>Fi</th><th>Hi%</th></tr></thead><tbody><tr><td>[5–15)</td><td>10</td><td>6</td><td>0.12</td><td>12%</td><td>6</td><td>12%</td></tr><tr><td>[15–25)</td><td>20</td><td>12</td><td>0.24</td><td>24%</td><td>18</td><td>36%</td></tr><tr><td>[25–35)</td><td>30</td><td>15</td><td>0.30</td><td>30%</td><td>33</td><td>66%</td></tr><tr><td>[35–45)</td><td>40</td><td>10</td><td>0.20</td><td>20%</td><td>43</td><td>86%</td></tr><tr><td>[45–55)</td><td>50</td><td>5</td><td>0.10</td><td>10%</td><td>48</td><td>96%</td></tr><tr><td>[55–65]</td><td>60</td><td>2</td><td>0.04</td><td>4%</td><td>50</td><td>100%</td></tr></tbody><tfoot><tr><td>TOTAL</td><td>—</td><td>50</td><td>1.00</td><td>100%</td><td>—</td><td>—</td></tr></tfoot></table></div>
+    <div class="step"><div class="sn">✓</div><div class="sc"><b>Interpretación</b>El 66% tarda menos de 35 minutos. Solo el 4% tarda más de 55 min. El intervalo modal es [25–35).</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     04 — GRÁFICAS
+═══════════════════════════════════════════ -->
+<section id="graficas">
+<div class="container">
+  <div class="sec-head"><div class="nn">04</div><div><h2>Gráficas Estadísticas</h2><div class="divider"></div><p>Visualización de datos en contextos reales</p></div></div>
+  <div class="g2">
+    <div class="ch"><h4>📊 Histograma — Tiempo de desplazamiento</h4><canvas id="histChart" height="220"></canvas><p style="font-size:.8rem;color:var(--muted);margin-top:8px">Distribución sesgada a la derecha: mayoría entre 25–35 min.</p></div>
+    <div class="ch"><h4>🔵 Gráfico Circular — Medio de transporte</h4><canvas id="pieChart" height="220"></canvas><p style="font-size:.8rem;color:var(--muted);margin-top:8px">El 38% usa transporte público. Solo el 8% camina.</p></div>
+    <div class="ch"><h4>📈 Polígono de Frecuencias — Dos grupos</h4><canvas id="polyChart" height="220"></canvas><p style="font-size:.8rem;color:var(--muted);margin-top:8px">Compara la distribución de desplazamiento entre dos grupos.</p></div>
+    <div class="ch"><h4>📉 Ojiva — Frecuencia Acumulada</h4><canvas id="ojivaChart" height="220"></canvas><p style="font-size:.8rem;color:var(--muted);margin-top:8px">En Hi = 0.50: la mediana se ubica cerca de 30 min.</p></div>
+    <div class="ch" style="grid-column:1/-1"><h4>📊 Diagrama de Barras — Materias favoritas Grado 11°</h4><canvas id="barChart" height="180"></canvas></div>
+  </div>
+  <div class="card hl" style="margin-top:4px">
+    <h3>¿Cuándo usar cada gráfico?</h3>
+    <div class="tw"><table><thead><tr><th>Tipo</th><th>Variable</th><th>Cuándo usarlo</th></tr></thead><tbody><tr><td>Histograma</td><td>Cuant. continua</td><td>Distribución de datos agrupados</td></tr><tr><td>Barras</td><td>Cualitativa / Discreta</td><td>Comparar categorías separadas</td></tr><tr><td>Circular</td><td>Cualitativa / Discreta</td><td>Mostrar proporciones de un todo</td></tr><tr><td>Polígono</td><td>Cuant. continua</td><td>Comparar dos distribuciones</td></tr><tr><td>Ojiva</td><td>Cuantitativa</td><td>Leer frecuencias acumuladas y percentiles</td></tr></tbody></table></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     05 — MEDIDAS DESCRIPTIVAS
+═══════════════════════════════════════════ -->
+<section id="medidas">
+<div class="container">
+  <div class="sec-head"><div class="nn">05</div><div><h2>Medidas Descriptivas</h2><div class="divider"></div><p>Tendencia central, posición y dispersión</p></div></div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--slate);margin-bottom:6px;border-bottom:3px solid var(--amber);padding-bottom:8px">A. Tendencia Central</h3>
+  <div class="g3" style="margin-top:16px">
+    <div class="card hl"><h3>Media (x̄)</h3><div class="fm" style="font-size:.85rem">x̄ = Σxi / n</div><p style="font-size:.85rem;margin-top:8px">Promedio. Sensible a valores atípicos.</p></div>
+    <div class="card tl"><h3>Mediana (Me)</h3><div class="fm" style="font-size:.85rem">Pos = (n+1)/2</div><p style="font-size:.85rem;margin-top:8px">Valor central. Robusta frente a atípicos.</p></div>
+    <div class="card rs"><h3>Moda (Mo)</h3><div class="fm" style="font-size:.85rem">Mayor fi</div><p style="font-size:.85rem;margin-top:8px">Valor más frecuente. Puede ser múltiple.</p></div>
+  </div>
+  <div class="ex" style="margin-top:18px">
+    <div class="ex-hd"><span class="etag">EJEMPLO</span><h4>Ingresos mensuales de 10 trabajadores (miles $)</h4></div>
+    <p>Datos: 1800, 2200, 1900, 2100, 2000, 1800, 8500, 1900, 2200, 1900</p>
+    <div class="step"><div class="sn">1</div><div class="sc"><b>Media</b>x̄ = 26300/10 = <strong>$2630 miles</strong></div></div>
+    <div class="step"><div class="sn">2</div><div class="sc"><b>Mediana (datos ordenados)</b>1800, 1800, 1900, 1900, 1900, 2000, 2100, 2200, 2200, 8500 → Me = (1900+2000)/2 = <strong>$1950 miles</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="sc"><b>Moda</b>1900 aparece 3 veces → Mo = <strong>$1900 miles</strong></div></div>
+    <div class="step"><div class="sn">✓</div><div class="sc"><b>¿Cuál usar?</b>La media ($2630) es poco representativa por el gerente ($8500). La <em>mediana</em> ($1950) refleja mejor el ingreso típico.</div></div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--slate);margin:36px 0 6px;border-bottom:3px solid var(--teal);padding-bottom:8px">B. Medidas de Posición</h3>
+  <div class="g3" style="margin-top:16px">
+    <div class="card tl"><h3>Cuartiles Q₁, Q₂, Q₃</h3><div class="fm" style="font-size:.8rem">Qi = i(n+1)/4</div><p style="font-size:.85rem;margin-top:8px">Dividen en 4 partes. Q₂ = mediana.</p></div>
+    <div class="card"><h3>Deciles D₁…D₉</h3><div class="fm" style="font-size:.8rem">Di = i(n+1)/10</div><p style="font-size:.85rem;margin-top:8px">Dividen en 10 partes. D₅ = mediana.</p></div>
+    <div class="card rs"><h3>Percentiles P₁…P₉₉</h3><div class="fm" style="font-size:.8rem">Pi = i(n+1)/100</div><p style="font-size:.85rem;margin-top:8px">P90: el 90% de datos está por debajo.</p></div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--slate);margin:36px 0 6px;border-bottom:3px solid var(--rose);padding-bottom:8px">C. Medidas de Dispersión</h3>
+  <div class="g2" style="margin-top:16px">
+    <div class="card hl"><h3>Rango (R)</h3><div class="fm" style="font-size:.9rem">R = Xmax − Xmin</div></div>
+    <div class="card tl"><h3>Varianza (s²)</h3><div class="fm" style="font-size:.82rem">s² = Σ(xi − x̄)² / (n−1)</div></div>
+    <div class="card rs"><h3>Desviación Estándar (s)</h3><div class="fm" style="font-size:.9rem">s = √s²</div></div>
+    <div class="card"><h3>Coef. de Variación (CV)</h3><div class="fm" style="font-size:.9rem">CV = (s/x̄) × 100%</div></div>
+  </div>
+  <div class="ex" style="margin-top:16px">
+    <div class="ex-hd"><span class="etag">EJEMPLO</span><h4>Comparación de lluvias: dos ciudades colombianas</h4></div>
+    <p>Ciudad A: 85, 90, 88, 92, 87, 89 (mm) · Ciudad B: 60, 110, 75, 120, 80, 105 (mm)</p>
+    <div class="step"><div class="sn">1</div><div class="sc"><b>Medias</b>x̄ₐ = 88.5 mm · x̄ᵦ = 91.7 mm</div></div>
+    <div class="step"><div class="sn">2</div><div class="sc"><b>Desviaciones estándar</b>sₐ = 2.43 mm · sᵦ = 22.8 mm</div></div>
+    <div class="step"><div class="sn">3</div><div class="sc"><b>CV</b>CVₐ = 2.7% · CVᵦ = 24.9%</div></div>
+    <div class="step"><div class="sn">✓</div><div class="sc"><b>Conclusión</b>Ciudad B tiene variabilidad relativa casi 10× mayor. Sus lluvias son mucho más irregulares.</div></div>
+  </div>
+  <div class="card hl" style="margin-top:16px">
+    <h3>📐 Regla Empírica — Distribución Normal</h3>
+    <div class="g3" style="margin-top:12px;text-align:center">
+      <div style="background:#e8f5e9;border-radius:4px;padding:14px"><strong style="color:#2e7d32;font-size:1.3rem">68%</strong><br><small>x̄ ± 1s</small></div>
+      <div style="background:#e3f2fd;border-radius:4px;padding:14px"><strong style="color:#1565c0;font-size:1.3rem">95%</strong><br><small>x̄ ± 2s</small></div>
+      <div style="background:#fff3e0;border-radius:4px;padding:14px"><strong style="color:#e65100;font-size:1.3rem">99.7%</strong><br><small>x̄ ± 3s</small></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     06 — ACTIVIDADES
+═══════════════════════════════════════════ -->
+<section id="actividades">
+<div class="container">
+  <div class="sec-head"><div class="nn">06</div><div><h2>Actividades de Aprendizaje</h2><div class="divider"></div><p>5 actividades con preguntas generadas aleatoriamente · Grado 11°</p></div></div>
+
+  <div class="act">
+    <div class="act-hd"><div class="act-num">1</div><h3>Lectura e interpretación de tablas de frecuencia</h3></div>
+    <div id="a1q" class="q-area"><p>Haz clic en "Nueva pregunta" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="gA1()">🎲 Nueva pregunta</button>
+      <button class="btn am" onclick="cA1()">✔ Verificar</button>
+    </div>
+    <div id="a1fb" class="fb"></div>
+  </div>
+
+  <div class="act">
+    <div class="act-hd"><div class="act-num">2</div><h3>Análisis de gráficas estadísticas</h3></div>
+    <div id="a2q" class="q-area"><p>Haz clic en "Nueva pregunta" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="gA2()">🎲 Nueva pregunta</button>
+      <button class="btn am" onclick="cA2()">✔ Verificar</button>
+    </div>
+    <div id="a2fb" class="fb"></div>
+  </div>
+
+  <div class="act">
+    <div class="act-hd"><div class="act-num">3</div><h3>Cálculo de medidas de tendencia central</h3></div>
+    <button class="tog-c" onclick="toggleCalc('c3sci')">🔬 Calculadora Científica</button>
+    <div id="c3sci" class="sci"></div>
+    <div id="a3q" class="q-area"><p>Haz clic en "Nueva pregunta" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="gA3()">🎲 Nueva pregunta</button>
+      <button class="btn am" onclick="cA3()">✔ Verificar</button>
+    </div>
+    <div id="a3fb" class="fb"></div>
+  </div>
+
+  <div class="act">
+    <div class="act-hd"><div class="act-num">4</div><h3>Medidas de dispersión en contexto</h3></div>
+    <button class="tog-c" onclick="toggleCalc('c4sci')">🔬 Calculadora Científica</button>
+    <div id="c4sci" class="sci"></div>
+    <div id="a4q" class="q-area"><p>Haz clic en "Nueva pregunta" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="gA4()">🎲 Nueva pregunta</button>
+      <button class="btn am" onclick="cA4()">✔ Verificar</button>
+    </div>
+    <div id="a4fb" class="fb"></div>
+  </div>
+
+  <div class="act">
+    <div class="act-hd"><div class="act-num">5</div><h3>Razonamiento estadístico — Elección de medida adecuada</h3></div>
+    <div id="a5q" class="q-area"><p>Haz clic en "Nueva pregunta" para comenzar.</p></div>
+    <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="gA5()">🎲 Nueva pregunta</button>
+      <button class="btn am" onclick="cA5()">✔ Verificar</button>
+    </div>
+    <div id="a5fb" class="fb"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     07 — PRUEBA
+═══════════════════════════════════════════ -->
+<section id="pruebas" style="padding-bottom:80px">
+<div class="container">
+  <div class="sec-head"><div class="nn">07</div><div><h2>Prueba Tipo ICFES</h2><div class="divider"></div><p>5 versiones con preguntas mezcladas de todos los contextos</p></div></div>
+  <div class="card hl">
+    <h3>Instrucciones</h3>
+    <p style="margin-bottom:14px">Hay <strong>5 versiones</strong> de la prueba, cada una con preguntas de <strong>distintos contextos</strong> (salud, economía, ambiente, deporte, educación) mezcladas aleatoriamente. El docente suministrará el <strong>código de 3 cifras</strong> correspondiente a cada versión. Los resultados se almacenan y pueden descargarse desde el panel del docente.</p>
+    <div class="g2" style="margin-bottom:16px">
+      <div style="background:var(--sec);padding:16px;border-radius:4px">
+        <strong style="color:var(--teal)">Para estudiantes:</strong><br>
+        <span style="font-size:.9rem">Haz clic en "Iniciar prueba" e ingresa el código que te entregó tu docente.</span>
+      </div>
+      <div style="background:var(--sec);padding:16px;border-radius:4px">
+        <strong style="color:var(--rose)">Para el docente:</strong><br>
+        <span style="font-size:.9rem">Accede al panel con tu contraseña usando el enlace "Docente" en el menú superior.</span>
+      </div>
+    </div>
+    <button class="btn am" onclick="openCodeScreen()">▶ Iniciar prueba (estudiantes)</button>
+    <button class="btn dk" style="margin-left:10px" onclick="openTeacherModal(event)">👩‍🏫 Panel docente</button>
+  </div>
+</div>
+</section>
+
+<footer style="background:var(--ink);color:rgba(250,247,242,.4);text-align:center;padding:28px;font-size:.82rem">
+  <p>Estadística · Grado 11° · Alineada con Estándares Básicos MEN Colombia</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════
+function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function ra(n,mn,mx){return Array.from({length:n},()=>rnd(mn,mx));}
+function avg(a){return a.reduce((x,y)=>x+y,0)/a.length;}
+function showFb(id,ok,msg){
+  var e=document.getElementById(id);
+  e.className='fb '+(ok?'ok':'no');
+  e.innerHTML=ok?'✔ ¡Correcto! '+msg:'✘ Incorrecto. '+msg;
+  e.style.display='block';
+}
+
+// ═══════════════════════════════════════════
+// PORCENTAJE CALCULADORAS
+// ═══════════════════════════════════════════
+function c1(){
+  var a=parseFloat(document.getElementById('p1a').value);
+  var b=parseFloat(document.getElementById('p1b').value);
+  if(isNaN(a)||isNaN(b)||b===0){document.getElementById('r1').innerHTML='Ingresa valores válidos';return;}
+  document.getElementById('r1').innerHTML=a+' es el <strong>'+(a/b*100).toFixed(2)+'%</strong> de '+b;
+}
+function c2(){
+  var x=parseFloat(document.getElementById('p2x').value);
+  var n=parseFloat(document.getElementById('p2n').value);
+  if(isNaN(x)||isNaN(n)){document.getElementById('r2').innerHTML='Ingresa valores válidos';return;}
+  document.getElementById('r2').innerHTML='El '+x+'% de '+n+' = <strong>'+(x*n/100).toFixed(2)+'</strong>';
+}
+function c3(){
+  var a=parseFloat(document.getElementById('p3a').value);
+  var x=parseFloat(document.getElementById('p3x').value);
+  if(isNaN(a)||isNaN(x)||x===0){document.getElementById('r3').innerHTML='Ingresa valores válidos';return;}
+  document.getElementById('r3').innerHTML='Si '+a+' = '+x+'%, total = <strong>'+(a*100/x).toFixed(2)+'</strong>';
+}
+function c4(s){
+  var v=parseFloat(document.getElementById('p4v').value);
+  var c=parseFloat(document.getElementById('p4c').value);
+  if(isNaN(v)||isNaN(c)){document.getElementById('r4').innerHTML='Ingresa valores válidos';return;}
+  var d=v*c/100;
+  document.getElementById('r4').innerHTML=(s>0?'Aumento':'Descuento')+' de '+c+'%: <strong>'+(v+s*d).toFixed(2)+'</strong>';
+}
+
+// ═══════════════════════════════════════════
+// ACTIVIDAD PORCENTAJES
+// ═══════════════════════════════════════════
+var _pctAns='';
+var pctPool=[
+  function(){
+    var t=rnd(200,600), p=rnd(1,9)*10, par=Math.round(t*p/100);
+    _pctAns=p+'%';
+    return'En una encuesta a <strong>'+t+' jóvenes colombianos</strong>, '+par+' afirmaron haber consumido al menos una comida ultra-procesada el día anterior. ¿Qué porcentaje tiene este hábito?<br><small>Responde con %, ej: 45%</small><br><input id="pin" class="inp" style="width:140px;margin-top:10px" placeholder="XX%">';
+  },
+  function(){
+    var tot=rnd(500,2000), pct=rnd(5,40), part=Math.round(tot*pct/100);
+    _pctAns=part+'';
+    return'Un municipio tiene <strong>'+tot+' votantes habilitados</strong>. En las elecciones participó el '+pct+'% del padrón. ¿Cuántas personas votaron?<br><input id="pin" class="inp" style="width:160px;margin-top:10px" placeholder="Número de personas">';
+  },
+  function(){
+    var part=rnd(30,120), pct=rnd(20,60), tot=Math.round(part*100/pct);
+    _pctAns=tot+'';
+    return'En una institución educativa, <strong>'+part+' estudiantes</strong> participaron en el Día del Idioma, representando el '+pct+'% de quienes asistieron ese día. ¿Cuántos estudiantes asistieron en total?<br><input id="pin" class="inp" style="width:160px;margin-top:10px" placeholder="Total de estudiantes">';
+  },
+  function(){
+    var d=rnd(5,25);
+    var ini=rnd(30,80)*1000;
+    _pctAns=d+'%';
+    return'El precio de un artículo pasó de <strong>$'+ini.toLocaleString()+'</strong> a <strong>$'+Math.round(ini*(1+d/100)).toLocaleString()+'</strong> COP. ¿Cuál fue el porcentaje de aumento?<br><input id="pin" class="inp" style="width:130px;margin-top:10px" placeholder="XX%">';
+  },
+  function(){
+    var precio=rnd(50,200)*1000, iva=19, total=Math.round(precio*1.19);
+    _pctAns=total+'';
+    return'Un artículo cuesta <strong>$'+precio.toLocaleString()+'</strong> COP antes de IVA. Calcula el precio final con IVA del '+iva+'% incluido. (Solo el número, sin puntos ni $)<br><input id="pin" class="inp" style="width:180px;margin-top:10px" placeholder="Precio con IVA">';
+  },
+  function(){
+    var aprobados=rnd(15,28), total=32, rep=total-aprobados;
+    _pctAns=Math.round(rep/total*100)+'%';
+    return'En un salón de <strong>'+total+' estudiantes de grado 11°</strong>, '+aprobados+' aprobaron estadística en el primer periodo. ¿Qué porcentaje reprobó?<br><input id="pin" class="inp" style="width:130px;margin-top:10px" placeholder="XX%">';
+  }
+];
+function genPct(){
+  var idx=rnd(0,pctPool.length-1);
+  var html=pctPool[idx]();
+  document.getElementById('pct-q').innerHTML='<p>'+html+'</p>';
+  document.getElementById('pct-fb').style.display='none';
+}
+function checkPct(){
+  var e=document.getElementById('pin');
+  if(!e){showFb('pct-fb',false,'Genera un problema primero.');return;}
+  var v=e.value.trim().replace(/[\s$,.]/g,'').toLowerCase();
+  var a=_pctAns.replace(/[\s$,.]/g,'').toLowerCase();
+  showFb('pct-fb',v===a,'La respuesta correcta es: <strong>'+_pctAns+'</strong>');
+}
+
+// ═══════════════════════════════════════════
+// ACTIVIDADES 1–5
+// ═══════════════════════════════════════════
+var _A1ans='', _A1exp='';
+var _A2ans='', _A2exp='';
+var _A3ans='';
+var _A4ans='';
+var _A5ans='', _A5exp='';
+
+// ─── Actividad 1: Tablas ───
+var pool1=[
+  {q:'La siguiente tabla muestra la distribución de edades de pacientes en un centro de salud:<br><table style="font-size:.82rem;margin:10px 0"><thead><tr><th>Edad</th><th>fi</th><th>hi%</th><th>Fi</th></tr></thead><tbody><tr><td>[20-30)</td><td>8</td><td>16%</td><td>8</td></tr><tr><td>[30-40)</td><td>14</td><td>28%</td><td>22</td></tr><tr><td>[40-50)</td><td>18</td><td>36%</td><td>40</td></tr><tr><td>[50-60)</td><td>7</td><td>14%</td><td>47</td></tr><tr><td>[60-70]</td><td>3</td><td>6%</td><td>50</td></tr></tbody><tfoot><tr><td>Total</td><td>50</td><td>100%</td><td>—</td></tr></tfoot></table>¿Qué porcentaje de pacientes tiene <strong>menos de 50 años</strong>?',
+   opts:['A) 36%','B) 64%','C) 80%','D) 44%'],ans:'C',exp:'Fi[40-50) = 40 de 50 → Hi = 40/50 × 100 = 80%'},
+  {q:'Según la misma tabla de edades, ¿cuál es el intervalo modal?',
+   opts:['A) [20-30)','B) [30-40)','C) [40-50)','D) [50-60)'],ans:'C',exp:'[40-50) tiene fi = 18, la frecuencia más alta'},
+  {q:'Una encuesta de uso de internet: [0-2h): fi=10, [2-4h): fi=25, [4-6h): fi=30, [6-8h): fi=20, [8-10h]: fi=15. Total n=100.<br>¿Cuál es la frecuencia relativa acumulada hasta [4-6h)?',
+   opts:['A) 0.30','B) 0.35','C) 0.65','D) 0.70'],ans:'C',exp:'Fi = 10+25+30 = 65; Hi = 65/100 = 0.65'},
+  {q:'En la encuesta de internet anterior, ¿qué porcentaje de personas usa internet <strong>más de 6 horas</strong> diarias?',
+   opts:['A) 15%','B) 20%','C) 35%','D) 65%'],ans:'C',exp:'fi[6-8h)+fi[8-10h] = 20+15 = 35 → 35%'},
+  {q:'Una tabla de frecuencias tiene n=60. La fi del intervalo [10-15) es 9. ¿Cuál es la frecuencia relativa hi de ese intervalo?',
+   opts:['A) 0.09','B) 0.12','C) 0.15','D) 0.18'],ans:'C',exp:'hi = 9/60 = 0.15'}
+];
+function gA1(){
+  var item=pool1[rnd(0,pool1.length-1)];
+  _A1ans=item.ans; _A1exp=item.exp;
+  var html='<p>'+item.q+'</p><div class="opts" style="margin-top:10px">';
+  item.opts.forEach(function(o){html+='<label><input type="radio" name="ra1" value="'+o[0]+'"> '+o+'</label>';});
+  html+='</div>';
+  document.getElementById('a1q').innerHTML=html;
+  document.getElementById('a1fb').style.display='none';
+}
+function cA1(){
+  var s=document.querySelector('input[name="ra1"]:checked');
+  if(!s){showFb('a1fb',false,'Selecciona una opción primero.');return;}
+  showFb('a1fb',s.value===_A1ans,'Opción correcta: <strong>'+_A1ans+'</strong>. '+_A1exp);
+}
+
+// ─── Actividad 2: Gráficas ───
+var pool2=[
+  {q:'En un gráfico circular del presupuesto mensual familiar, el sector "Alimentación" ocupa 126°. Si el presupuesto total es $2 500 000, ¿cuánto destina a alimentación?',
+   opts:['A) $750 000','B) $875 000','C) $900 000','D) $1 260 000'],ans:'B',exp:'(126/360) × 2 500 000 = 0.35 × 2 500 000 = $875 000'},
+  {q:'Un histograma de temperaturas diarias muestra que el intervalo [20°-24°) tiene frecuencia 12 de un total de 60 días. ¿Cuál es la frecuencia relativa?',
+   opts:['A) 0.12','B) 0.20','C) 0.24','D) 0.30'],ans:'B',exp:'hi = 12/60 = 0.20'},
+  {q:'En una ojiva, el punto donde Hi = 0.75 corresponde a x = 55. Esto significa que:',
+   opts:['A) El 75% de los datos supera 55','B) El 25% de los datos es menor que 55','C) El 75% de los datos es ≤ 55','D) La moda es 55'],ans:'C',exp:'Hi = 0.75 → el 75% de los datos son ≤ 55 (definición de frecuencia acumulada)'},
+  {q:'Un polígono de frecuencias tiene su punto más alto en la marca de clase 35. Esto indica que:',
+   opts:['A) La moda está en el intervalo cuya marca es 35','B) La mediana es 35','C) La media es 35','D) El 50% de los datos supera 35'],ans:'A',exp:'El punto más alto del polígono = mayor frecuencia = intervalo modal'},
+  {q:'En un gráfico circular de fuentes de energía, el sector hidráulico ocupa 144°. ¿Qué porcentaje representa?',
+   opts:['A) 30%','B) 35%','C) 40%','D) 45%'],ans:'C',exp:'(144/360) × 100 = 40%'}
+];
+function gA2(){
+  var item=pool2[rnd(0,pool2.length-1)];
+  _A2ans=item.ans; _A2exp=item.exp;
+  var html='<p>'+item.q+'</p><div class="opts" style="margin-top:10px">';
+  item.opts.forEach(function(o){html+='<label><input type="radio" name="ra2" value="'+o[0]+'"> '+o+'</label>';});
+  html+='</div>';
+  document.getElementById('a2q').innerHTML=html;
+  document.getElementById('a2fb').style.display='none';
+}
+function cA2(){
+  var s=document.querySelector('input[name="ra2"]:checked');
+  if(!s){showFb('a2fb',false,'Selecciona una opción primero.');return;}
+  showFb('a2fb',s.value===_A2ans,'Opción correcta: <strong>'+_A2ans+'</strong>. '+_A2exp);
+}
+
+// ─── Actividad 3: Tendencia central ───
+var pool3=[
+  function(){
+    var d=ra(7,60,95);
+    var m=(avg(d)).toFixed(1);
+    _A3ans=m;
+    return'Las notas del tercer periodo de 7 estudiantes son: <em>'+d.join(', ')+'</em>.<br>Calcula la <strong>media aritmética</strong> (1 decimal).<br><input id="ai3" class="inp" style="width:130px;margin-top:10px" placeholder="X.X">';
+  },
+  function(){
+    var d=ra(9,1500,5000).sort(function(a,b){return a-b;});
+    var n=d.length;
+    var med=(n%2===0?(d[n/2-1]+d[n/2])/2:d[Math.floor(n/2)]);
+    _A3ans=med.toFixed(0);
+    return'Ingresos mensuales de 9 familias (miles $): <em>'+d.join(', ')+'</em>.<br>Calcula la <strong>mediana</strong>.<br><input id="ai3" class="inp" style="width:130px;margin-top:10px" placeholder="Número">';
+  },
+  function(){
+    var vals=[2,3,4,5];
+    var mo=vals[rnd(0,3)];
+    var base=ra(5,2,5);
+    var full=base.concat([mo,mo,mo]).sort(function(a,b){return a-b;});
+    _A3ans=mo+'';
+    return'Puntuaciones de test de hábitos de estudio: <em>'+full.join(', ')+'</em>.<br>Identifica la <strong>moda</strong>.<br><input id="ai3" class="inp" style="width:100px;margin-top:10px" placeholder="Número">';
+  },
+  function(){
+    var xs=[157.5,162.5,167.5,172.5,177.5];
+    var fi=[9,8,9,8,5];
+    var n=fi.reduce(function(a,b){return a+b;},0);
+    var xm=(xs.reduce(function(a,x,i){return a+x*fi[i];},0)/n).toFixed(1);
+    _A3ans=xm;
+    return'Tabla de estaturas de estudiantes de 11°:<br><table style="font-size:.83rem;margin:10px 0"><thead><tr><th>Marca xi</th><th>fi</th></tr></thead><tbody><tr><td>157.5</td><td>9</td></tr><tr><td>162.5</td><td>8</td></tr><tr><td>167.5</td><td>9</td></tr><tr><td>172.5</td><td>8</td></tr><tr><td>177.5</td><td>5</td></tr></tbody></table>Calcula la <strong>media para datos agrupados</strong>: x̄ = Σ(xi·fi)/n (1 decimal).<br><input id="ai3" class="inp" style="width:130px;margin-top:10px" placeholder="X.X">';
+  }
+];
+function gA3(){
+  var idx=rnd(0,pool3.length-1);
+  var html=pool3[idx]();
+  document.getElementById('a3q').innerHTML='<p>'+html+'</p>';
+  document.getElementById('a3fb').style.display='none';
+}
+function cA3(){
+  var e=document.getElementById('ai3');
+  if(!e){showFb('a3fb',false,'Genera una pregunta primero.');return;}
+  var v=parseFloat(e.value.replace(/[,$\s]/g,''));
+  var a=parseFloat(_A3ans);
+  showFb('a3fb',Math.abs(v-a)<0.25,'Respuesta correcta: <strong>'+_A3ans+'</strong>');
+}
+
+// ─── Actividad 4: Dispersión ───
+var pool4=[
+  function(){
+    var d=ra(6,50,90);
+    var m=avg(d);
+    var s2=d.reduce(function(a,x){return a+(x-m)*(x-m);},0)/(d.length-1);
+    var s=Math.sqrt(s2).toFixed(2);
+    _A4ans=s;
+    return'Temperaturas máximas semanales (°C): <em>'+d.join(', ')+'</em>.<br>Calcula la <strong>desviación estándar muestral (s)</strong> (2 decimales).<br><input id="ai4" class="inp" style="width:130px;margin-top:10px" placeholder="X.XX">';
+  },
+  function(){
+    var d=ra(6,200,800);
+    _A4ans=(Math.max.apply(null,d)-Math.min.apply(null,d))+'';
+    return'Ventas diarias de una tienda (miles $): <em>'+d.join(', ')+'</em>.<br>Calcula el <strong>rango</strong>.<br><input id="ai4" class="inp" style="width:130px;margin-top:10px" placeholder="Número">';
+  },
+  function(){
+    var m=rnd(40,80), s=rnd(3,12);
+    var cv=Math.round(s/m*100);
+    _A4ans=cv+'%';
+    return'Un grupo de grado 11° tiene media x̄ = '+m+' y desviación estándar s = '+s+' en estadística.<br>Calcula el <strong>coeficiente de variación CV = (s/x̄)×100%</strong>. Responde con %.<br><input id="ai4" class="inp" style="width:130px;margin-top:10px" placeholder="XX%">';
+  },
+  function(){
+    var q1=rnd(15,30), q3=q1+rnd(12,25);
+    _A4ans=(q3-q1)+'';
+    return'En la distribución de puntajes SABER 11°, Q₁ = '+q1+' y Q₃ = '+q3+'.<br>Calcula el <strong>rango intercuartílico (RIC)</strong>.<br><input id="ai4" class="inp" style="width:130px;margin-top:10px" placeholder="Número">';
+  }
+];
+function gA4(){
+  var idx=rnd(0,pool4.length-1);
+  var html=pool4[idx]();
+  document.getElementById('a4q').innerHTML='<p>'+html+'</p>';
+  document.getElementById('a4fb').style.display='none';
+}
+function cA4(){
+  var e=document.getElementById('ai4');
+  if(!e){showFb('a4fb',false,'Genera una pregunta primero.');return;}
+  var v=parseFloat(e.value.replace('%','').trim());
+  var a=parseFloat(_A4ans.replace('%',''));
+  showFb('a4fb',Math.abs(v-a)<0.35,'Respuesta correcta: <strong>'+_A4ans+'</strong>');
+}
+
+// ─── Actividad 5: Razonamiento ───
+var pool5=[
+  {q:'Una empresa dice que el "salario promedio" es $4 500 000. Pero el 80% de empleados gana menos de $2 000 000 y 3 directivos ganan más de $20 000 000. ¿Qué medida describe mejor el salario típico?',
+   opts:['A) La media, porque usa todos los datos','B) La moda, porque es la más sencilla','C) La mediana, porque no es afectada por los valores extremos','D) El rango, porque muestra la diferencia total'],
+   ans:'C',exp:'Con valores atípicos extremos (salarios de directivos), la mediana es el mejor indicador del salario típico.'},
+  {q:'El IMC de 100 pacientes sigue distribución normal con x̄ = 25 y s = 3. ¿Entre qué valores se encuentra el IMC del 95% de los pacientes?',
+   opts:['A) [22, 28]','B) [19, 31]','C) [16, 34]','D) [22.5, 27.5]'],
+   ans:'B',exp:'Regla empírica: 95% → x̄ ± 2s = [25−6, 25+6] = [19, 31]'},
+  {q:'Grupo A: CV = 8%, Grupo B: CV = 42% (misma media de 75 puntos). ¿Qué se puede concluir?',
+   opts:['A) El grupo B es más homogéneo','B) El grupo A es más homogéneo','C) Los grupos tienen el mismo desempeño','D) No se puede concluir nada'],
+   ans:'B',exp:'Menor CV = menor variabilidad relativa = mayor homogeneidad. El grupo A (CV=8%) es más homogéneo.'},
+  {q:'Al graficar ingresos de 50 hogares, la distribución es fuertemente sesgada a la derecha. ¿Qué indica esto?',
+   opts:['A) La mayoría de hogares tiene ingresos altos','B) Pocos hogares con ingresos muy altos alargan la cola derecha','C) La media y mediana son iguales','D) No hay valores atípicos'],
+   ans:'B',exp:'Sesgo positivo: la cola se extiende hacia valores altos (media > mediana). Pocos valores muy altos "jalan" la media.'},
+  {q:'Para comparar variabilidad de lluvias entre Bogotá (x̄=80mm, s=15mm) y Leticia (x̄=320mm, s=45mm), ¿qué medida es más apropiada?',
+   opts:['A) La desviación estándar','B) La varianza','C) El coeficiente de variación','D) El rango'],
+   ans:'C',exp:'El CV permite comparar variabilidad entre conjuntos con medias muy diferentes. CVBogotá=18.75% vs CVLeticia=14.06%.'}
+];
+function gA5(){
+  var item=pool5[rnd(0,pool5.length-1)];
+  _A5ans=item.ans; _A5exp=item.exp;
+  var html='<p>'+item.q+'</p><div class="opts" style="margin-top:10px">';
+  item.opts.forEach(function(o){html+='<label><input type="radio" name="ra5" value="'+o[0]+'"> '+o+'</label>';});
+  html+='</div>';
+  document.getElementById('a5q').innerHTML=html;
+  document.getElementById('a5fb').style.display='none';
+}
+function cA5(){
+  var s=document.querySelector('input[name="ra5"]:checked');
+  if(!s){showFb('a5fb',false,'Selecciona una opción primero.');return;}
+  showFb('a5fb',s.value===_A5ans,'Opción correcta: <strong>'+_A5ans+'</strong>. '+_A5exp);
+}
+
+// ═══════════════════════════════════════════
+// CALCULADORA CIENTÍFICA
+// ═══════════════════════════════════════════
+var _sciState={};
+function buildSci(id){
+  var el=document.getElementById(id);
+  if(!el||el.innerHTML.trim())return;
+  var btns=[
+    ['sin(','cos(','tan(','log(','ln(','√('],
+    ['π','e','(',')','^','!'],
+    ['7','8','9','÷','C','←'],
+    ['4','5','6','×','%','±'],
+    ['1','2','3','-',' ',' '],
+    ['0','.',' ','+',' ','=']
+  ];
+  var html='<div class="sdisp"><div class="sexp" id="'+id+'_e"></div><div class="sval" id="'+id+'_v">0</div></div><div class="sbg">';
+  btns.forEach(function(row){
+    row.forEach(function(b){
+      if(b===' '){html+='<span></span>';return;}
+      var cls='';
+      if(['sin(','cos(','tan(','log(','ln(','√(','π','e','!'].indexOf(b)>=0)cls='fn';
+      else if(['÷','×','-','+','^','%'].indexOf(b)>=0)cls='op';
+      else if(b==='=')cls='eq';
+      else if(b==='C')cls='cl';
+      html+='<button class="sb '+cls+'" onclick="si(\''+id+'\',\''+b+'\')">'+b+'</button>';
+    });
+  });
+  html+='</div>';
+  el.innerHTML=html;
+  _sciState[id]={e:'',v:'0'};
+}
+function si(id,btn){
+  buildSci(id);
+  var st=_sciState[id];
+  if(!st)return;
+  var e=st.e;
+  if(btn==='C'){e='';st.v='0';}
+  else if(btn==='←'){e=e.slice(0,-1);}
+  else if(btn==='='){
+    try{
+      var x=e.replace(/÷/g,'/').replace(/×/g,'*')
+        .replace(/π/g,'Math.PI').replace(/e(?![0-9])/g,'Math.E')
+        .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(')
+        .replace(/tan\(/g,'Math.tan(').replace(/log\(/g,'Math.log10(')
+        .replace(/ln\(/g,'Math.log(').replace(/√\(/g,'Math.sqrt(')
+        .replace(/\^/g,'**').replace(/(\d+)!/g,'_f($1)');
+      var r=Function('"use strict";function _f(n){return n<=1?1:n*_f(n-1);}return '+x)();
+      st.v=(+r.toFixed(10))+'';
+      var ep=document.getElementById(id+'_e');
+      if(ep)ep.textContent=e+' =';
+      e='';
+    }catch(err){st.v='Error';}
+  }else if(btn==='±'){
+    if(st.v!=='0'&&st.v!=='Error')st.v=(parseFloat(st.v)*-1)+'';
+  }else{
+    e+=btn;
+  }
+  st.e=e;
+  var vp=document.getElementById(id+'_v');
+  if(vp)vp.textContent=st.v||'0';
+  if(e){var ep2=document.getElementById(id+'_e');if(ep2)ep2.textContent=e;}
+}
+function toggleCalc(id){
+  buildSci(id);
+  var el=document.getElementById(id);
+  if(el)el.classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════
+// CHARTS
+// ═══════════════════════════════════════════
+window.addEventListener('load',function(){
+  try{
+    new Chart(document.getElementById('histChart'),{
+      type:'bar',
+      data:{labels:['[5-15)','[15-25)','[25-35)','[35-45)','[45-55)','[55-65]'],datasets:[{label:'fi',data:[6,12,15,10,5,2],backgroundColor:'rgba(11,100,100,.75)',borderColor:'#0b6464',borderWidth:1,borderRadius:0}]},
+      options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},title:{display:true,text:'Tiempo (min)'}},y:{beginAtZero:true,ticks:{stepSize:3},title:{display:true,text:'fi'}}},categoryPercentage:1,barPercentage:1}
+    });
+  }catch(e){console.warn('histChart:',e);}
+  try{
+    new Chart(document.getElementById('pieChart'),{
+      type:'pie',
+      data:{labels:['T. Público 38%','Vehículo propio 28%','Bicicleta 16%','Moto 10%','A pie 8%'],datasets:[{data:[38,28,16,10,8],backgroundColor:['#0b6464','#c8790a','#b03026','#253245','#7a7570'],borderWidth:2,borderColor:'white'}]},
+      options:{plugins:{legend:{position:'bottom',labels:{font:{size:10}}}}}
+    });
+  }catch(e){console.warn('pieChart:',e);}
+  try{
+    new Chart(document.getElementById('polyChart'),{
+      type:'line',
+      data:{labels:['10','20','30','40','50','60'],datasets:[
+        {label:'Grupo A',data:[6,12,15,10,5,2],borderColor:'#0b6464',backgroundColor:'rgba(11,100,100,.1)',tension:.4,pointRadius:5,fill:true},
+        {label:'Grupo B',data:[3,8,12,14,8,5],borderColor:'#c8790a',backgroundColor:'rgba(200,121,10,.08)',tension:.4,pointRadius:5,fill:true}
+      ]},
+      options:{plugins:{legend:{position:'top'}},scales:{x:{title:{display:true,text:'Marca de clase (min)'}},y:{beginAtZero:true}}}
+    });
+  }catch(e){console.warn('polyChart:',e);}
+  try{
+    new Chart(document.getElementById('ojivaChart'),{
+      type:'line',
+      data:{labels:['5','15','25','35','45','55','65'],datasets:[{label:'Hi%',data:[0,12,36,66,86,96,100],borderColor:'#253245',backgroundColor:'rgba(37,50,69,.07)',tension:.4,pointRadius:5,pointBackgroundColor:'#b03026',fill:true}]},
+      options:{plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'Tiempo (min)'}},y:{max:100,title:{display:true,text:'% Acumulado'}}}}
+    });
+  }catch(e){console.warn('ojivaChart:',e);}
+  try{
+    new Chart(document.getElementById('barChart'),{
+      type:'bar',
+      data:{labels:['Matemáticas','Filosofía','Español','Biología','Física','Ed. Física'],datasets:[{label:'Estudiantes',data:[42,28,35,38,24,53],backgroundColor:['rgba(11,100,100,.8)','rgba(200,121,10,.8)','rgba(176,48,38,.8)','rgba(37,50,69,.8)','rgba(122,117,112,.8)','rgba(26,143,143,.8)'],borderRadius:4}]},
+      options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true}}}
+    });
+  }catch(e){console.warn('barChart:',e);}
+});
+
+// ═══════════════════════════════════════════
+// NAV ACTIVE
+// ═══════════════════════════════════════════
+var _secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',function(){
+  var c='';
+  _secs.forEach(function(s){if(window.scrollY>=s.offsetTop-90)c=s.id;});
+  document.querySelectorAll('nav a[href^="#"]').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+c);});
+});
+
+// ═══════════════════════════════════════════
+// EXAM SYSTEM — 5 VERSIONS (codes hidden from students)
+// ═══════════════════════════════════════════
+var _ec='eyIxIjogIjc0MSIsICIyIjogIjM4MiIsICIzIjogIjUxOSIsICI0IjogIjI2NyIsICI1IjogIjgzNSJ9';
+function _getCode(v){return JSON.parse(atob(_ec))[v];}
+
+var _currentVer=null;
+var _examTimerInt=null;
+var _examTimeLeft=2400;
+
+// ─── ALL QUESTIONS POOL (mixed contexts) ───
+var ALL_QUESTIONS=[
+  // INTERPRETACIÓN
+  {c:'Interpretación',t:'La siguiente tabla muestra casos de dengue por trimestre:<br><table style="font-size:.82rem;margin:10px 0"><thead><tr><th>Trimestre</th><th>fi</th><th>hi%</th></tr></thead><tbody><tr><td>Ene-Mar</td><td>24</td><td>20%</td></tr><tr><td>Abr-Jun</td><td>42</td><td>35%</td></tr><tr><td>Jul-Sep</td><td>36</td><td>30%</td></tr><tr><td>Oct-Dic</td><td>18</td><td>15%</td></tr></tbody></table>¿Qué porcentaje de casos ocurrió en la segunda mitad del año (Jul-Dic)?',opts:['A) 30%','B) 45%','C) 55%','D) 65%'],ans:'B',exp:'Jul-Sep(30%) + Oct-Dic(15%) = 45%'},
+  {c:'Interpretación',t:'Puntajes SABER 11° de 60 estudiantes:<br><table style="font-size:.82rem;margin:10px 0"><thead><tr><th>Puntaje</th><th>fi</th><th>Fi</th></tr></thead><tbody><tr><td>[200-250)</td><td>8</td><td>8</td></tr><tr><td>[250-300)</td><td>15</td><td>23</td></tr><tr><td>[300-350)</td><td>20</td><td>43</td></tr><tr><td>[350-400)</td><td>12</td><td>55</td></tr><tr><td>[400-450]</td><td>5</td><td>60</td></tr></tbody></table>¿Qué porcentaje obtuvo menos de 300 puntos?',opts:['A) 23%','B) 35%','C) 38.3%','D) 43%'],ans:'C',exp:'Fi[250-300) = 23 → Hi = 23/60 × 100 = 38.3%'},
+  {c:'Interpretación',t:'En una tabla de frecuencias de ingresos familiares, hi[1M-2M) = 0.30 y n = 150. ¿Cuántas familias tienen ingresos en ese intervalo?',opts:['A) 30','B) 40','C) 45','D) 50'],ans:'C',exp:'fi = hi × n = 0.30 × 150 = 45 familias'},
+  {c:'Interpretación',t:'En una ojiva de velocidades de ciclistas, Hi = 0.50 en x = 32 km/h. Esto indica que:',opts:['A) La media es 32 km/h','B) La moda es 32 km/h','C) La mediana es 32 km/h','D) El Q₃ es 32 km/h'],ans:'C',exp:'Hi = 0.50 → corresponde a la mediana (percentil 50)'},
+  {c:'Interpretación',t:'En un histograma de precipitaciones, el intervalo [100-200mm) tiene frecuencia 8 de n=40. ¿Cuál es su frecuencia relativa porcentual?',opts:['A) 8%','B) 15%','C) 20%','D) 25%'],ans:'C',exp:'hi = 8/40 = 0.20 = 20%'},
+  {c:'Interpretación',t:'Una distribución de edades de pacientes muestra Fi[40-50) = 40 de n=50. ¿Cuántos pacientes tienen 50 años o más?',opts:['A) 5','B) 8','C) 10','D) 12'],ans:'C',exp:'n - Fi[40-50) = 50 - 40 = 10 pacientes tienen 50 años o más'},
+  {c:'Interpretación',t:'En un polígono de frecuencias, el pico más alto corresponde a la marca de clase 35. Esto indica que:',opts:['A) La mediana es 35','B) La media es 35','C) El intervalo modal contiene la marca 35','D) El 50% de datos supera 35'],ans:'C',exp:'El punto más alto del polígono = mayor frecuencia = intervalo modal'},
+  {c:'Interpretación',t:'En una encuesta de uso de internet: [0-2h): fi=10, [2-4h): fi=25, [4-6h): fi=30. Si n=100, ¿cuál es Hi hasta [4-6h)?',opts:['A) 0.30','B) 0.55','C) 0.65','D) 0.70'],ans:'C',exp:'Fi = 10+25+30 = 65; Hi = 65/100 = 0.65'},
+  {c:'Interpretación',t:'Gráfico circular del presupuesto familiar: sector "Alimentación" = 126°. Presupuesto total = $2 500 000. ¿Cuánto destina a alimentación?',opts:['A) $750 000','B) $875 000','C) $900 000','D) $1 260 000'],ans:'B',exp:'(126/360) × 2 500 000 = 0.35 × 2 500 000 = $875 000'},
+  {c:'Interpretación',t:'En una ojiva de tiempos de espera en urgencias, Hi = 0.80 en x = 45 min. Esto significa que:',opts:['A) El 80% espera más de 45 min','B) El 20% espera menos de 45 min','C) El 80% espera 45 min o menos','D) La moda es 45 min'],ans:'C',exp:'Hi = 0.80 → el 80% de los pacientes espera ≤ 45 minutos'},
+  // FORMULACIÓN
+  {c:'Formulación',t:'En una campaña de vacunación se inmunizó al 68% de 4 500 personas. ¿Cuántas fueron vacunadas?',opts:['A) 2 860','B) 3 060','C) 3 160','D) 3 260'],ans:'B',exp:'0.68 × 4 500 = 3 060 personas'},
+  {c:'Formulación',t:'El precio del arroz pasó de $2 800/kg a $3 360/kg. ¿Cuál fue el porcentaje de aumento?',opts:['A) 15%','B) 18%','C) 20%','D) 22%'],ans:'C',exp:'% = (3360-2800)/2800 × 100 = 20%'},
+  {c:'Formulación',t:'Notas de 7 estudiantes: 3, 4, 5, 3, 4, 2, 5. ¿Cuál es la media aritmética?',opts:['A) 3.57','B) 3.71','C) 4.00','D) 3.43'],ans:'B',exp:'Suma = 26; x̄ = 26/7 ≈ 3.71'},
+  {c:'Formulación',t:'Puntajes ordenados (n=7): 220, 248, 272, 285, 290, 318, 348. ¿Cuál es la mediana?',opts:['A) 272','B) 285','C) 290','D) 318'],ans:'B',exp:'n=7 impar: posición central = 4. Me = 285'},
+  {c:'Formulación',t:'Si x̄ = 40 y s = 6, ¿cuál es el coeficiente de variación?',opts:['A) 10%','B) 12%','C) 15%','D) 18%'],ans:'C',exp:'CV = (s/x̄)×100 = (6/40)×100 = 15%'},
+  {c:'Formulación',t:'Datos: 10, 14, 16, 18, 20, 22, 26. La mediana es:',opts:['A) 16','B) 17','C) 18','D) 20'],ans:'C',exp:'n=7 impar: posición 4. El 4° dato ordenado es 18'},
+  {c:'Formulación',t:'El colegio A aprobó el 72% de 250 estudiantes en SABER 11°. ¿Cuántos aprobaron?',opts:['A) 160','B) 170','C) 180','D) 190'],ans:'C',exp:'0.72 × 250 = 180 estudiantes'},
+  {c:'Formulación',t:'En la distribución de temperaturas Q₁=18°C, Q₃=27°C. ¿Cuál es el RIC?',opts:['A) 4°C','B) 5°C','C) 9°C','D) 18°C'],ans:'C',exp:'RIC = Q₃ - Q₁ = 27 - 18 = 9°C'},
+  {c:'Formulación',t:'Ahorros de 7 empleados (miles $): 150, 220, 180, 200, 190, 210, 175. ¿Cuál es la mediana?',opts:['A) 180','B) 190','C) 195','D) 200'],ans:'B',exp:'Ordenados: 150,175,180,190,200,210,220. n=7: Me = posición 4 = 190'},
+  {c:'Formulación',t:'Lluvias anuales (Regla empírica): distribución normal con x̄=1200mm, s=80mm. ¿Entre qué valores está el 68% de los datos?',opts:['A) [1040, 1360]','B) [1120, 1280]','C) [1040, 1280]','D) [1120, 1360]'],ans:'B',exp:'68% → x̄ ± 1s = [1200-80, 1200+80] = [1120, 1280]'},
+  // RAZONAMIENTO
+  {c:'Razonamiento',t:'Una empresa dice que el "salario promedio" es $4 500 000, pero la mediana es $1 800 000. Esto indica que:',opts:['A) La distribución es simétrica','B) Pocos directivos con salarios muy altos elevan la media','C) Hay muchos empleados con salarios muy bajos','D) Los datos tienen error'],ans:'B',exp:'Media >> Mediana → sesgo positivo. Pocos valores extremos altos distorsionan la media.'},
+  {c:'Razonamiento',t:'Grupo A: x̄=3.8, CV=5%. Grupo B: x̄=3.8, CV=29%. ¿Cuál grupo requiere más atención individualizada?',opts:['A) Grupo A por su alto promedio','B) Grupo B por su mayor heterogeneidad','C) Ambos por igual','D) Ninguno'],ans:'B',exp:'Mayor CV = mayor heterogeneidad. El grupo B tiene notas más dispersas, necesita atención diferenciada.'},
+  {c:'Razonamiento',t:'La estatura de estudiantes de 11° sigue distribución normal con x̄=165 cm, s=6 cm. ¿Qué porcentaje mide entre 153 y 177 cm?',opts:['A) 68%','B) 95%','C) 99.7%','D) 75%'],ans:'B',exp:'[153,177] = [165-12, 165+12] = [x̄-2s, x̄+2s] → 95%'},
+  {c:'Razonamiento',t:'Dos regiones tienen la misma lluvia media (1200mm). Región A: s=80mm, Región B: s=420mm. ¿Cuál tiene mayor variabilidad climática?',opts:['A) Región A','B) Región B','C) Ambas igual','D) No se puede determinar'],ans:'B',exp:'Mayor s = mayor variabilidad. Región B (s=420) tiene lluvias mucho más irregulares.'},
+  {c:'Razonamiento',t:'Al graficar ingresos de 50 hogares en un histograma, la distribución es sesgada a la derecha. Esto indica que:',opts:['A) La mayoría de hogares tiene ingresos altos','B) Hay pocos hogares con ingresos muy altos que alargan la cola derecha','C) Media y mediana son iguales','D) No hay valores atípicos'],ans:'B',exp:'Sesgo positivo: la cola derecha indica pocos valores extremamente altos que elevan la media por encima de la mediana.'},
+  {c:'Razonamiento',t:'Un deportista tiene x̄=76 puntos/partido. Equipo A tiene CV=4%, Equipo B tiene CV=38%. ¿Cuál equipo es más consistente?',opts:['A) Equipo B','B) Equipo A','C) Son iguales','D) No se puede determinar'],ans:'B',exp:'Menor CV = mayor consistencia. Equipo A (CV=4%) es mucho más predecible en sus resultados.'},
+  {c:'Razonamiento',t:'Distribución de puntajes ICFES con x̄=290, s=40. Un estudiante obtiene 370 pts. Su puntaje está a:',opts:['A) 1 desviación estándar sobre la media','B) 2 desviaciones estándar sobre la media','C) 3 desviaciones estándar sobre la media','D) Fuera de la distribución normal'],ans:'B',exp:'Z = (370-290)/40 = 80/40 = 2 → está a 2 desviaciones estándar sobre la media (95% percentil)'},
+  {c:'Razonamiento',t:'Un informe epidemiológico muestra media=75kg, mediana=68kg en peso de pacientes. Esto sugiere que:',opts:['A) La distribución es simétrica','B) Hay pacientes de bajo peso que bajan la media','C) Hay pacientes con obesidad severa que elevan la media','D) Los datos tienen error de medición'],ans:'C',exp:'Media > Mediana → sesgo positivo (cola derecha). Algunos pacientes muy pesados elevan la media.'},
+  {c:'Razonamiento',t:'Para comparar variabilidad de precios entre dos mercados muy diferentes, ¿qué medida es más apropiada?',opts:['A) La desviación estándar','B) La varianza','C) El coeficiente de variación','D) El rango'],ans:'C',exp:'El CV (dispersión relativa) permite comparar conjuntos con medias muy diferentes, independientemente de la escala.'},
+  {c:'Razonamiento',t:'En una distribución normal de calificaciones con x̄=3.5, s=0.4, ¿qué porcentaje de estudiantes tiene nota entre 2.7 y 4.3?',opts:['A) 68%','B) 95%','C) 99.7%','D) 50%'],ans:'B',exp:'[2.7, 4.3] = [3.5-0.8, 3.5+0.8] = [x̄-2s, x̄+2s] → 95% por regla empírica'}
+];
+
+// Build 5 exams by shuffling all questions and taking 15 (5 per competency)
+function buildExamVersions(){
+  var interp=ALL_QUESTIONS.filter(function(q){return q.c==='Interpretación';});
+  var form=ALL_QUESTIONS.filter(function(q){return q.c==='Formulación';});
+  var razon=ALL_QUESTIONS.filter(function(q){return q.c==='Razonamiento';});
+  var versions={};
+  for(var v=1;v<=5;v++){
+    // Shuffle each group with a version-specific seed (simple deterministic shuffle)
+    var si2=shuffle(interp,v*7);
+    var sf=shuffle(form,v*13);
+    var sr=shuffle(razon,v*19);
+    var qs=[];
+    for(var i=0;i<5;i++){qs.push(Object.assign({n:i+1},si2[i]||interp[i%interp.length]));}
+    for(var j=0;j<5;j++){qs.push(Object.assign({n:6+j},sf[j]||form[j%form.length]));}
+    for(var k=0;k<5;k++){qs.push(Object.assign({n:11+k},sr[k]||razon[k%razon.length]));}
+    // Renumber and shuffle order within exam
+    var exam=shuffle(qs,v*31);
+    exam.forEach(function(q,idx){q.n=idx+1;});
+    versions[v]={title:'Prueba de Estadística — Grado 11°',qs:exam};
+  }
+  return versions;
+}
+function shuffle(arr,seed){
+  var a=arr.slice();
+  var s=seed||1;
+  for(var i=a.length-1;i>0;i--){
+    s=(s*9301+49297)%233280;
+    var j=Math.floor((s/233280)*(i+1));
+    var tmp=a[i];a[i]=a[j];a[j]=tmp;
+  }
+  return a;
+}
+var EXAMS=buildExamVersions();
+
+// ─── CODE SCREEN ───
+function openCodeScreen(){
+  document.getElementById('codeIn').value='';
+  document.getElementById('codeErr').style.display='none';
+  document.getElementById('codeScreen').classList.add('show');
+}
+function verifyCode(){
+  var code=document.getElementById('codeIn').value.trim();
+  var err=document.getElementById('codeErr');
+  var matched=null;
+  for(var v=1;v<=5;v++){
+    if(code===_getCode(v)){matched=v;break;}
+  }
+  if(matched){
+    err.style.display='none';
+    _currentVer=matched;
+    document.getElementById('codeScreen').classList.remove('show');
+    openExam(matched);
+  }else{
+    err.style.display='block';
+    document.getElementById('codeIn').value='';
+  }
+}
+
+// ─── EXAM UI ───
+var examResults=[];
+try{examResults=JSON.parse(localStorage.getItem('examResults')||'[]');}catch(e){examResults=[];}
+
+function openExam(ver){
+  var ex=EXAMS[ver];
+  var overlay=document.getElementById('testOverlay');
+  var wrap=document.getElementById('testWrap');
+  // Build questions HTML (hidden initially)
+  var qhtml=ex.qs.map(function(q){
+    var opts=q.opts.map(function(o){
+      return'<label class="io"><input type="radio" name="eq'+q.n+'" value="'+o[0]+'" onchange="updateAnswCount()"> '+o+'</label>';
+    }).join('');
+    return'<div class="iq" id="eq'+q.n+'"><div class="qn">Pregunta '+q.n+' / 15</div><div class="qc">Competencia: '+q.c+'</div><p class="qt">'+q.t+'</p>'+opts+'</div>';
+  }).join('');
+  wrap.innerHTML=
+    '<div class="test-top">'+
+      '<h2>'+ex.title+'</h2>'+
+      '<p>Analiza los datos y selecciona la opción correcta. Dispones de <strong>40 minutos</strong>.</p>'+
+      '<div class="test-meta" id="testMetaBar" style="display:none">'+
+        '<div class="tm">⏱ <span id="timerDisp">40:00</span></div>'+
+        '<div class="tm">📋 15 preguntas</div>'+
+        '<div class="tm" id="answCountDisp">0/15 respondidas</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="test-body">'+
+      buildStudentForm()+
+      '<div id="questionsArea" style="display:none">'+qhtml+'</div>'+
+    '</div>'+
+    '<div class="test-foot" id="testFooter" style="display:none">'+
+      '<div>'+
+        '<div class="pgbar" style="width:260px"><div class="pgfill" id="examProg" style="width:0%"></div></div>'+
+        '<small style="color:var(--muted);font-size:.79rem" id="answLbl2">0 de 15 respondidas</small>'+
+      '</div>'+
+      '<div style="display:flex;gap:10px;flex-wrap:wrap">'+
+        '<button class="btn am" onclick="gradeExam()">📝 Calificar prueba</button>'+
+        '<button class="btn rs" onclick="closeExam()">✕ Cerrar</button>'+
+      '</div>'+
+    '</div>'+
+    '<div id="examResultArea" style="padding:0 28px 28px"></div>';
+  overlay.classList.add('show');
+  // Activate exam mode: hide all other page content
+  document.body.classList.add('exam-active');
+  overlay.classList.add('exam-mode');
+}
+function buildStudentForm(){
+  var grupos='';
+  for(var g=1;g<=6;g++)grupos+='<option value="'+g+'">Grupo '+g+'</option>';
+  return'<div class="stu-form">'+
+    '<h3>📋 Datos del estudiante / pareja</h3>'+
+    '<p style="color:var(--muted);font-size:.88rem;margin-bottom:14px">Prueba individual o en pareja (opcional). Si es en pareja, completa los dos campos.</p>'+
+    '<div class="form-grid">'+
+      '<div><label class="lbl">Estudiante 1 — Apellidos y Nombres</label>'+
+        '<input class="inp" id="stu1" type="text" placeholder="Ej: GARCÍA LÓPEZ, JUAN DAVID" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"></div>'+
+      '<div><label class="lbl">Estudiante 2 — Apellidos y Nombres (opcional)</label>'+
+        '<input class="inp" id="stu2" type="text" placeholder="Dejar en blanco si es individual" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"></div>'+
+    '</div>'+
+    '<div style="max-width:260px;margin-bottom:20px"><label class="lbl">Grupo</label>'+
+    '<select class="inp" id="stuGrupo"><option value="">— Selecciona tu grupo —</option>'+grupos+'</select></div>'+
+    '<div id="stuFormError" style="color:var(--rose);font-size:.88rem;margin-bottom:10px;display:none">⚠ Debes ingresar el nombre del Estudiante 1 y seleccionar el grupo.</div>'+
+    '<button class="btn am" style="font-size:1rem;padding:13px 32px" onclick="startExam()">▶ Iniciar prueba</button>'+
+  '</div>';
+}
+function closeExam(){
+  if(_examActive&&!_examGraded){
+    showWarnModal();
+    return;
+  }
+  _examActive=false;
+  removeExamGuards();
+  document.getElementById('testOverlay').classList.remove('show','exam-mode');
+  document.body.classList.remove('exam-active');
+  clearInterval(_examTimerInt);
+}
+function updateAnswCount(){
+  var n=0;
+  for(var i=1;i<=15;i++){if(document.querySelector('input[name="eq'+i+'"]:checked'))n++;}
+  var c=document.getElementById('answCountDisp');if(c)c.textContent=n+'/15 respondidas';
+  var l=document.getElementById('answLbl2');if(l)l.textContent=n+' de 15 respondidas';
+  var p=document.getElementById('examProg');if(p)p.style.width=(n/15*100)+'%';
+}
+function startExam(){
+  // Validate form
+  var s1=(document.getElementById('stu1')||{}).value||'';
+  var gr=(document.getElementById('stuGrupo')||{}).value||'';
+  var errEl=document.getElementById('stuFormError');
+  if(!s1.trim()||!gr){
+    if(errEl)errEl.style.display='block';
+    return;
+  }
+  if(errEl)errEl.style.display='none';
+  // Show questions and footer, hide form start button
+  var qa=document.getElementById('questionsArea');
+  var ft=document.getElementById('testFooter');
+  var mb=document.getElementById('testMetaBar');
+  var sf=document.querySelector('.stu-form button');
+  var sfErr=document.getElementById('stuFormError');
+  if(qa)qa.style.display='block';
+  if(ft)ft.style.display='flex';
+  if(mb)mb.style.display='flex';
+  if(sf)sf.style.display='none';
+  if(sfErr)sfErr.style.display='none';
+  // Make form fields read-only
+  var stu1el=document.getElementById('stu1');
+  var stu2el=document.getElementById('stu2');
+  var grupoEl=document.getElementById('stuGrupo');
+  if(stu1el)stu1el.setAttribute('readonly','true');
+  if(stu2el)stu2el.setAttribute('readonly','true');
+  if(grupoEl)grupoEl.setAttribute('disabled','true');
+  // Scroll to questions
+  if(qa)qa.scrollIntoView({behavior:'smooth',block:'start'});
+  // Start 40-minute timer immediately
+  clearInterval(_examTimerInt);
+  _examTimeLeft=2400;
+  _examTimerInt=setInterval(function(){
+    _examTimeLeft--;
+    var m=String(Math.floor(_examTimeLeft/60)).padStart(2,'0');
+    var s=String(_examTimeLeft%60).padStart(2,'0');
+    var el=document.getElementById('timerDisp');
+    if(el){el.textContent=m+':'+s;el.style.color=_examTimeLeft<300?'#ff4444':'';}
+    if(_examTimeLeft<=0){clearInterval(_examTimerInt);gradeExam();}
+  },1000);
+  // Lock navigation
+  addExamGuards();
+}
+function startExamTimer(){startExam();}
+function gradeExam(reason){
+  if(_examGraded)return;
+  _examGraded=true;
+  _examActive=false;
+  clearInterval(_examTimerInt);
+  // Disable all radio buttons to freeze answers
+  document.querySelectorAll('input[type="radio"][name^="eq"]').forEach(function(r){r.disabled=true;});
+  var ex=EXAMS[_currentVer];
+  var stu1=(document.getElementById('stu1')||{}).value||'Sin nombre';
+  var stu2=(document.getElementById('stu2')||{}).value||'';
+  var grupo=(document.getElementById('stuGrupo')||{}).value||'—';
+  var score=0;
+  var compRes={};
+  ex.qs.forEach(function(q){
+    var sel=document.querySelector('input[name="eq'+q.n+'"]:checked');
+    var ok=sel&&sel.value===q.ans;
+    if(ok)score++;
+    if(!compRes[q.c])compRes[q.c]={ok:0,total:0};
+    compRes[q.c].total++;
+    if(ok)compRes[q.c].ok++;
+    document.querySelectorAll('input[name="eq'+q.n+'"]').forEach(function(r){
+      var lb=r.closest('label');
+      if(lb){
+        if(r.value===q.ans)lb.classList.add('res-hi-ok');
+        else if(r.checked)lb.classList.add('res-hi-no');
+      }
+    });
+    var qel=document.getElementById('eq'+q.n);
+    if(qel&&!qel.querySelector('.exp-note')){
+      var d=document.createElement('div');
+      d.className='exp-note';
+      d.innerHTML='<strong>💡 Explicación: </strong>'+q.exp;
+      qel.appendChild(d);
+    }
+  });
+  var pct=Math.round(score/15*100);
+  var level=score>=13?'Superior':score>=11?'Alto':score>=8?'Básico':score>=5?'Bajo':'Mínimo';
+  var color=score>=11?'var(--teal)':score>=8?'var(--amber)':'var(--rose)';
+  var motivo=reason||'Entrega voluntaria';
+  var res={
+    fecha:new Date().toLocaleString('es-CO'),
+    estudiante1:stu1.trim()||'Sin nombre',
+    estudiante2:stu2.trim()||'—',
+    grupo:grupo||'—',
+    version:_currentVer,
+    puntaje:score,
+    porcentaje:pct,
+    nivel:level,
+    motivo:motivo,
+    interpretacion:compRes['Interpretación']?compRes['Interpretación'].ok:0,
+    formulacion:compRes['Formulación']?compRes['Formulación'].ok:0,
+    razonamiento:compRes['Razonamiento']?compRes['Razonamiento'].ok:0
+  };
+  examResults.push(res);
+  try{localStorage.setItem('examResults',JSON.stringify(examResults));}catch(e){}
+  // Send to Google Sheets
+  sendToSheets(res);
+  // Remove exam-active mode
+  document.body.classList.remove('exam-active');
+  removeExamGuards();
+  var area=document.getElementById('examResultArea');
+  if(area){
+    var exitMsg=reason&&reason!=='Entrega voluntaria'?'<div style="background:#fff3cd;border:1px solid #e0a800;border-radius:4px;padding:10px 16px;margin-bottom:14px;font-size:.9rem;color:#664d03">⚠️ Prueba finalizada automáticamente: '+reason+'</div>':'';
+    area.innerHTML=
+      exitMsg+
+      '<div style="background:'+color+';color:white;border-radius:4px;padding:24px 28px;margin-top:8px">'+
+        '<div style="font-family:\'Playfair Display\',serif;font-size:2.5rem;font-weight:900">'+score+'/15 <span style="font-size:1.2rem;opacity:.8">('+pct+'%)</span></div>'+
+        '<div style="font-size:1rem;margin:6px 0 16px;opacity:.85">Nivel: <strong>'+level+'</strong> | '+res.estudiante1+(res.estudiante2&&res.estudiante2!='—'?' · '+res.estudiante2:'')+' | Grupo '+grupo+'</div>'+
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">'+
+          Object.keys(compRes).map(function(k){
+            return'<div style="background:rgba(255,255,255,.15);border-radius:4px;padding:12px;text-align:center">'+
+              '<div style="font-size:1.3rem;font-weight:700">'+compRes[k].ok+'/'+compRes[k].total+'</div>'+
+              '<div style="font-size:.78rem;opacity:.8">'+k+'</div></div>';
+          }).join('')+
+        '</div>'+
+        '<div id="sheetsSendStatus" style="margin-top:14px;font-size:.85rem;opacity:.8">'+
+          '<span class="send-spinner"></span>Enviando resultados a Google Sheets...'+
+        '</div>'+
+      '</div>';
+    area.scrollIntoView({behavior:'smooth'});
+  }
+}
+
+// ═══════════════════════════════════════════
+// GOOGLE SHEETS INTEGRATION
+// ═══════════════════════════════════════════
+// INSTRUCCIONES PARA EL DOCENTE:
+// 1. Abre Google Sheets y crea una hoja nueva.
+// 2. Ve a Extensiones → Apps Script y pega el script del archivo adjunto.
+// 3. Despliega como aplicación web (Ejecutar como: Yo; Acceso: Cualquier persona).
+// 4. Copia la URL del despliegue y reemplaza el valor de SHEETS_URL abajo.
+var SHEETS_URL='https://script.google.com/macros/s/TU_ID_DE_DESPLIEGUE_AQUI/exec';
+
+function sendToSheets(res){
+  var payload={
+    fecha:res.fecha,
+    estudiante1:res.estudiante1,
+    estudiante2:res.estudiante2,
+    grupo:res.grupo,
+    version:res.version,
+    puntaje:res.puntaje,
+    porcentaje:res.porcentaje,
+    nivel:res.nivel,
+    motivo:res.motivo||'Entrega voluntaria',
+    interpretacion:res.interpretacion,
+    formulacion:res.formulacion,
+    razonamiento:res.razonamiento
+  };
+  // Use no-cors fetch so it works from any device without CORS issues
+  fetch(SHEETS_URL,{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  }).then(function(){
+    var el=document.getElementById('sheetsSendStatus');
+    if(el)el.innerHTML='✅ Resultado registrado en Google Sheets';
+  }).catch(function(err){
+    var el=document.getElementById('sheetsSendStatus');
+    if(el)el.innerHTML='⚠️ No se pudo enviar a Sheets (revisa la URL). Guardado localmente.';
+    console.warn('Sheets error:',err);
+  });
+}
+
+// ═══════════════════════════════════════════
+// EXAM GUARDS — block navigation during exam
+// ═══════════════════════════════════════════
+var _examActive=false;
+var _examGraded=false;
+var _pendingExit=false;
+
+function addExamGuards(){
+  _examActive=true;
+  _examGraded=false;
+  _pendingExit=false;
+  // Block browser back / forward
+  history.pushState(null,'',location.href);
+  window.addEventListener('popstate',_onPopState);
+  // Block tab close / refresh
+  window.addEventListener('beforeunload',_onBeforeUnload);
+  // Detect visibility change (minimize / switch tab)
+  document.addEventListener('visibilitychange',_onVisibility);
+}
+function removeExamGuards(){
+  _examActive=false;
+  window.removeEventListener('popstate',_onPopState);
+  window.removeEventListener('beforeunload',_onBeforeUnload);
+  document.removeEventListener('visibilitychange',_onVisibility);
+}
+function _onPopState(){
+  if(!_examActive)return;
+  history.pushState(null,'',location.href); // block going back
+  showWarnModal();
+}
+function _onBeforeUnload(e){
+  if(!_examActive)return;
+  e.preventDefault();
+  e.returnValue='';
+  return'';
+}
+function _onVisibility(){
+  if(!_examActive||document.visibilityState!=='hidden')return;
+  // Page was hidden (minimized, tab switched)
+  showWarnModal();
+}
+function showWarnModal(){
+  if(_pendingExit||_examGraded)return;
+  _pendingExit=true;
+  document.getElementById('warnModal').classList.add('show');
+}
+function cancelExit(){
+  _pendingExit=false;
+  document.getElementById('warnModal').classList.remove('show');
+}
+function confirmExit(){
+  document.getElementById('warnModal').classList.remove('show');
+  // Show finalization message in the exam area then grade
+  var area=document.getElementById('examResultArea');
+  if(area){
+    area.innerHTML='<div style="background:var(--rose);color:white;border-radius:4px;padding:18px 24px;margin-top:8px;font-size:1rem">'+
+      '<strong>Prueba finalizada.</strong> Se registrarán los resultados de las preguntas contestadas hasta este momento.'+
+    '</div>';
+    area.scrollIntoView({behavior:'smooth'});
+  }
+  setTimeout(function(){gradeExam('Salida / minimización de página');},800);
+}
+
+// ═══════════════════════════════════════════
+// TEACHER PANEL
+// ═══════════════════════════════════════════
+var _teacherPass='RG9jZW50ZTIwMjUq';
+function _getTP(){return atob(_teacherPass);}
+
+function openTeacherModal(e){
+  if(e)e.preventDefault();
+  document.getElementById('taIn').value='';
+  document.getElementById('taErr').style.display='none';
+  document.getElementById('taModal').classList.add('show');
+  setTimeout(function(){document.getElementById('taIn').focus();},100);
+}
+function verifyTeacher(){
+  var v=document.getElementById('taIn').value;
+  if(v===_getTP()){
+    document.getElementById('taModal').classList.remove('show');
+    buildPanel();
+    document.getElementById('teacherPanel').classList.add('show');
+    window.scrollTo(0,0);
+  }else{
+    document.getElementById('taErr').style.display='block';
+    document.getElementById('taIn').value='';
+  }
+}
+function closePanel(){document.getElementById('teacherPanel').classList.remove('show');}
+
+function buildPanel(){
+  var r=examResults;
+  var statsEl=document.getElementById('panelStats');
+  var tableEl=document.getElementById('panelTableWrap');
+  if(!r.length){
+    statsEl.innerHTML='<p style="opacity:.6;grid-column:1/-1;color:var(--cream)">No hay resultados registrados aún.</p>';
+    tableEl.innerHTML='';return;
+  }
+  var totalPts=r.reduce(function(a,x){return a+x.puntaje;},0);
+  var avPts=totalPts/r.length;
+  var byGroup={};
+  r.forEach(function(x){if(!byGroup[x.grupo])byGroup[x.grupo]=[];byGroup[x.grupo].push(x.puntaje);});
+  statsEl.innerHTML=
+    '<div class="stat-box"><div class="val">'+r.length+'</div><div class="lbl2">Pruebas realizadas</div></div>'+
+    '<div class="stat-box"><div class="val">'+avPts.toFixed(1)+'/15</div><div class="lbl2">Puntaje promedio</div></div>'+
+    '<div class="stat-box"><div class="val">'+Math.round(avPts/15*100)+'%</div><div class="lbl2">% promedio</div></div>'+
+    '<div class="stat-box"><div class="val">'+Math.max.apply(null,r.map(function(x){return x.puntaje;}))+'/15</div><div class="lbl2">Puntaje máximo</div></div>'+
+    '<div class="stat-box"><div class="val">'+Math.min.apply(null,r.map(function(x){return x.puntaje;}))+'/15</div><div class="lbl2">Puntaje mínimo</div></div>'+
+    '<div class="stat-box"><div class="val">'+Object.keys(byGroup).length+'</div><div class="lbl2">Grupos participantes</div></div>';
+  var rows=r.map(function(x){
+    return'<tr><td style="font-size:.76rem">'+x.fecha+'</td><td>'+x.estudiante1+'</td><td>'+x.estudiante2+'</td>'+
+      '<td>Grupo '+x.grupo+'</td><td>V'+x.version+'</td>'+
+      '<td style="font-weight:700;color:var(--amber-l)">'+x.puntaje+'/15</td>'+
+      '<td>'+x.porcentaje+'%</td><td>'+x.nivel+'</td>'+
+      '<td>'+(x.motivo||'—')+'</td>'+
+      '<td>'+x.interpretacion+'/5</td><td>'+x.formulacion+'/5</td><td>'+x.razonamiento+'/5</td></tr>';
+  }).join('');
+  tableEl.innerHTML=
+    '<h3 style="font-family:\'Playfair Display\',serif;color:var(--amber-l);margin-bottom:14px">Detalle de resultados</h3>'+
+    '<div style="overflow-x:auto"><table>'+
+    '<thead><tr><th>Fecha</th><th>Estudiante 1</th><th>Estudiante 2</th><th>Grupo</th><th>Ver.</th><th>Puntaje</th><th>%</th><th>Nivel</th><th>Motivo</th><th>Interp.</th><th>Formul.</th><th>Razon.</th></tr></thead>'+
+    '<tbody>'+rows+'</tbody></table></div>';
+}
+function clearResults(){
+  if(confirm('¿Seguro que deseas borrar todos los resultados?')){
+    examResults=[];
+    try{localStorage.removeItem('examResults');}catch(e){}
+    buildPanel();
+  }
+}
+function exportExcel(){
+  if(!examResults.length){alert('No hay resultados para exportar.');return;}
+  var data=[
+    ['RESULTADOS — PRUEBA DE ESTADÍSTICA GRADO 11°'],
+    [],
+    ['Fecha','Estudiante 1','Estudiante 2','Grupo','Versión','Puntaje','Porcentaje','Nivel','Motivo','Interpretación /5','Formulación /5','Razonamiento /5']
+  ];
+  examResults.forEach(function(r){
+    data.push([r.fecha,r.estudiante1,r.estudiante2,r.grupo,'Versión '+r.version,r.puntaje,r.porcentaje+'%',r.nivel,r.motivo||'—',r.interpretacion,r.formulacion,r.razonamiento]);
+  });
+  var avgP=(examResults.reduce(function(a,x){return a+x.puntaje;},0)/examResults.length).toFixed(2);
+  data.push([]);
+  data.push(['RESUMEN']);
+  data.push(['Total pruebas',examResults.length]);
+  data.push(['Puntaje promedio',avgP+'/15']);
+  data.push(['% promedio',Math.round(avgP/15*100)+'%']);
+  data.push(['Máximo',Math.max.apply(null,examResults.map(function(x){return x.puntaje;}))+'/15']);
+  data.push(['Mínimo',Math.min.apply(null,examResults.map(function(x){return x.puntaje;}))+'/15']);
+  var wb=XLSX.utils.book_new();
+  var ws=XLSX.utils.aoa_to_sheet(data);
+  ws['!cols']=[{wch:22},{wch:30},{wch:30},{wch:10},{wch:10},{wch:10},{wch:12},{wch:12},{wch:20},{wch:16},{wch:14},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,ws,'Resultados');
+  XLSX.writeFile(wb,'Resultados_Estadistica_11_'+new Date().toLocaleDateString('es-CO').replace(/\//g,'-')+'.xlsx');
+}
+</script>
+</body>
+</html>
