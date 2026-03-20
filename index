@@ -1343,7 +1343,7 @@ function gradeExam(reason){
 // 2. Ve a Extensiones → Apps Script y pega el script del archivo adjunto.
 // 3. Despliega como aplicación web (Ejecutar como: Yo; Acceso: Cualquier persona).
 // 4. Copia la URL del despliegue y reemplaza el valor de SHEETS_URL abajo.
-var SHEETS_URL='https://script.google.com/macros/s/TU_ID_DE_DESPLIEGUE_AQUI/exec';
+var SHEETS_URL='https://script.google.com/macros/s/AKfycbyo-OW-IjFWwTIuMUnEEGy5wLYRU7PxMvKdgO7xXBBQ9XBC-uj1_A8S7F5IHpt0MRXmNQ/exec';
 
 function sendToSheets(res){
   var payload={
